@@ -1,0 +1,28 @@
+
+:root{
+    /* FONTS */
+--font-h1: "Yeseva One";
+--font-h2: "Dosis", sans-serif;
+--font-h3: "Dosis", sans-serif;
+--font-body: "PT Sans", sans-serif;
+
+    /* Font sizes */
+--size-h1: 2.10rem;
+--size-h2: 2rem; 
+--size-h3: 1.6rem;  
+--size-body: 1rem;
+
+
+    /* COLORS */
+--color-bg: #FAFAFB;
+--color-primary: #5A6242;
+--color-secondary: #FAD1D6;
+--color-lightGreen: #DCE8B8;
+--color-red: #DF3316;
+--color-white: #FFFFFF;
+--color-black: #000000;
+--color-shadow: #a7a7a7;
+
+    /* SPACING */
+    --margin-desktop: 9.4rem;
+}

@@ -1,0 +1,36 @@
+/* FONTS */
+h1{
+    font-family: var(--font-h1);
+    font-size: var(--size-h1);
+}
+
+h2{
+    font-family: var(--font-h2);
+    font-size: var(--size-h2);
+}
+
+h3{
+    font-family: var(--font-h3);
+    font-size: var(--size-h3);
+}
+
+body{
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+}
+
+/* MOBILE */
+
+p{
+    color: var(--color-red);
+}
+
+/* TABLET */
+
+
+/* DESKTOP */
+@media (min-width: 1024px){
+    body{
+        margin-inline: var(--margin-desktop);
+    }
+}
