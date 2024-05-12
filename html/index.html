@@ -5,11 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/frontpage.css">
+    <script src="../js/script_carrousel.js" defer></script>
     <title>Home</title>
 </head>
 <body>
-    <h1>Welcome</h1>
-    <h3>Welcome</h3>
-    <p>Hej med jer</p>
+    <section>
+        <h1>Search for Recipes</h1>
+        <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
+            updates from the culinary world. Go ahead and search for your favorite dish to discover
+            our detailed, easy-to-follow recipes for you to try at home!</p>
+        <div class="search_container">
+            <input type="text" placeholder="Seach for recipes">
+            <button class="search_box">
+                <span class="search_box_icon">
+                    <img src="../search_icon.svg" alt="Search Icon">
+                </span>
+            </button>
+        </div>
+        <article>
+                                    <!-- UI CARD COMPONENT -->
+          <div class="card_container">
+            <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <div class="card_details">
+                <div class="card_name_and_icon">
+                    <button class="btn_fav">
+                        <div class="search_box_icon">
+                            <img src="../heart-no-fill.svg" alt="heart Icon">
+                        </div>
+                    </button> 
+                    <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
+                </div>
+                
+                <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+            </div>
+            </div>  
+        </article> 
+    </section>
+    <section>
+            <h1>Browse by category</h1>
+            
+                                    <!-- UI CARD COMPONENT -->
+            <article>
+                <div class="card_container">
+                <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+                <div class="card_details">
+                    <div class="card_name_and_icon">
+                        <button class="btn_fav">
+                            <div class="search_box_icon">
+                                <img src="../heart-no-fill.svg" alt="heart Icon">
+                            </div>
+                        </button> 
+                        <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
+                    </div>
+                    
+                    <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+                </div>
+                </div>
+            </article>
+            <div class="arrow_container">
+                <img class="hidden arrow_down" src="../chevron-down.svg" alt="down arrow">
+            </div>
+    </section>
+    <section>
+        <h1>Explore more Recipes</h1>
+        
+        <!-- Carousel Component -->
+        <div class="carousel_container">
+            <div class="carousel_arrow_container left">
+                <img class="carousel_arrow" src="../chevron-left.svg" alt="left chevron">
+            </div>
+            <div class="carousel">
+            <!-- card item -->
+            <div class="carousel_item">
+            <img class="carousel_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <div class="carousel_details">
+                <article class="category_container">
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                </article>
+                
+                <h3 class="carousel_title hyphenate">Seasoned pokebowl with greens</h3>
+                <div class="add_container">
+                    <img class="card_img heart" src="../heart-no-fill.svg" alt="heart icon">
+                    <p>ADD</p>
+                </div>
+            </div>
+            </div>
+         <!-- items for example -->
+            <!-- card item -->
+            <div class="carousel_item">
+            <img class="carousel_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <div class="carousel_details">
+                <article class="category_container">
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                </article>
+                
+                <h3 class="carousel_title hyphenate">ITEM 2</h3>
+                <div class="add_container">
+                    <img class="card_img heart" src="../heart-no-fill.svg" alt="heart icon">
+                    <p>ADD</p>
+                </div>
+            </div>
+            </div>
+            <!-- card item -->
+            <div class="carousel_item">
+            <img class="carousel_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <div class="carousel_details">
+                <article class="category_container">
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                    <div class="categories"></div>
+                </article>
+                
+                <h3 class="carousel_title hyphenate">ITEM 3</h3>
+                <div class="add_container">
+                    <img class="card_img heart" src="../heart-no-fill.svg" alt="heart icon">
+                    <p>ADD</p>
+                </div>
+            </div>
+            </div>
+    <div class="carousel_arrow_container right">
+        <img class="carousel_arrow" src="../chevron-right.svg" alt="right chevron">
+    </div>
+</div>
+
+    </section>
+
 </body>
 </html>

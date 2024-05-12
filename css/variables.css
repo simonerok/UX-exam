@@ -23,6 +23,12 @@
 --color-black: #000000;
 --color-shadow: #a7a7a7;
 
+    /* BOX SHADOW */
+--color-black-r: 0;
+--color-black-g: 0;
+--color-black-b: 0;
+
     /* SPACING */
-    --margin-desktop: 9.4rem;
+--margin-desktop: 9.4rem;
+--margin-mobile: 2.1rem;
 }
