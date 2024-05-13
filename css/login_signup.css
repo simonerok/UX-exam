@@ -3,13 +3,18 @@
     text-align: center;
     margin: 1rem;
 }
+#signup_section{
+    text-align: center;
+    margin: 1rem;
+}
 
+/*changing the size and weigth of the undertitle with css, rather than with html*/
 .under_title{
     font-weight: 400;
     font-size: var(--size-h3);
 }
 
-/*general form*/
+/*general form styling*/
 form {
     background: var(--color-bg);
     box-shadow: 1px 4px 8px 1px var(--color-shadow);
@@ -45,6 +50,7 @@ label {
     font-family: var(--font-body);
 }
 
+
 input[type=submit]{
 width: 100%;
 font-family: var(--font-h3);
@@ -54,19 +60,49 @@ background-color: var(--color-primary);
 color: var(--color-white);
 }
 
+/* error message and icon styling*/
+form > div > div{
+    display: flex;
 
-#signup_text_link{
+}
+
+
+.error_icon{
+    font-style: normal;
+    font-family: var(--font-h3);
+    font-weight: 900;
+    font-size: 1rem;
+    background-color: var(--color-red);
+    border-radius: 100%;
+    color: var(--color-white);
+    width: 1.6rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.input_error{
+    border: 0.1rem solid var(--color-red);
+}
+
+.input_correct{
+    border: 0.2rem solid var(--color-lightGreen);
+}
+
+
+/*TODO - frontend validation styling*/
+
+
+/*link for signup/login page*/
+.text_link{
 font-size: 1.3rem;
 }
 
-#signup_text_link a{
+.text_link a{
     color:var(--color-primary);
     font-weight: 600;
     }
 
-
-
 .hidden{
-    display: block;
+    display: none;
 }
 
