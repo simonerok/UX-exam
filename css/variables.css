@@ -22,6 +22,10 @@
 --color-white: #FFFFFF;
 --color-black: #000000;
 --color-shadow: #a7a7a7;
+--color-box-shadow: rgba(0, 0, 0, 0.029); 
+--color-active-filter: #DCE8B8;
+--color-hover-filter: #ffffff85;
+
 
     /* BOX SHADOW */
 --color-black-r: 0;
