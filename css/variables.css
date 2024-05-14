@@ -21,14 +21,10 @@
 --color-red: #DF3316;
 --color-white: #FFFFFF;
 --color-black: #000000;
-<<<<<<< HEAD
 --color-shadow: #a7a7a7;
 --color-box-shadow: rgba(0, 0, 0, 0.029); 
 --color-active-filter: #DCE8B8;
 --color-hover-filter: #ffffff85;
-=======
---color-shadow: #f7f7f7;
->>>>>>> header
 
     /* SPACING */
     --margin-desktop: 9.4rem;
