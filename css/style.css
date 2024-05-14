@@ -32,6 +32,7 @@ body{
 
 /****************** MOBILE */
 
+<<<<<<< HEAD
 @media (min-width: 320px) {
 
 
@@ -52,6 +53,9 @@ footer{
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+=======
+/* TABLET */
+>>>>>>> header
 
 
 }
@@ -113,6 +117,7 @@ footer h1, h2{
         max-height: 15rem;
         margin-bottom: 1rem;
     }
+<<<<<<< HEAD
 
     footer{
         padding-left: 10rem;
@@ -199,4 +204,109 @@ footer h1, h2{
 
     
 
+=======
+}
+
+
+/*Navigation*/
+.banner{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+ul li a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+  /* burgermenu */
+    .toggle-btn {
+    background: transparent;
+    border: none;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: none; 
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    margin-inline: var(--margin-desktop);
+}
+
+.heart {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+    margin-inline: var(--margin-desktop);
+}
+
+.user {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 15px;
+    height: auto;
+    margin-right: 10px;
+    margin-inline: var(--margin-desktop);
+}
+
+@media (max-width: 600px) {
+    .toggle-btn {
+      display: block; /* Vis knappen, nÃ¥r viewporten maksimalt er 600px */
+    }
+
+    .main-menu {
+      display: contents; /* Fjern ".main-menu"-boksen fra ligningen, nÃ¥r viewporten maksimalt er 600px, men behold bÃ¸rnene, sÃ¥ disse deltager i flex-kontekten */
+    }
+
+    .main-menu ul {
+      display: none; /* Fjern menu-listen som standard */
+    }
+
+    .main-menu.shown ul {
+      /* Vis menu-listen, nÃ¥r klassen ".shown" er til stede */
+        border-top: 1px solid #000;
+        padding-top: 1rem;
+        display: flex;
+        flex: 1 1 100%;
+        flex-flow: column;
+    }
+
+    .heart , .user{
+        padding-top: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    .logo {
+        position: fixed;
+        margin: 10px;
+        top: 10px;
+        left: 0.2px;
+        width: 80px;
+        height: auto;
+    }
+
+
+>>>>>>> header
 }
