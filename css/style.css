@@ -10,6 +10,13 @@ html, body {
 
 
 /* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Yeseva+One&display=swap');
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
 h1{
     font-family: var(--font-h1);
     font-size: var(--size-h1);
