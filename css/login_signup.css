@@ -1,11 +1,11 @@
 /*login section*/
 #login_section{
     text-align: center;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 #signup_section{
     text-align: center;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 /*changing the size and weigth of the undertitle with css, rather than with html*/
@@ -16,11 +16,12 @@
 
 /*general form styling*/
 form {
+    position: relative;
     background: var(--color-bg);
     box-shadow: 1px 4px 8px 1px var(--color-shadow);
     border-width: 0px;
     margin: 1rem auto;
-    padding: 2rem 2.5rem;
+    padding: 2rem 2rem 2rem 1.5rem;
     max-width: 30rem;
     text-align: left;
     display: flex;
@@ -64,12 +65,15 @@ color: var(--color-white);
 
 /* error message and icon styling*/
 form > div > div{
+   
     display: flex;
 
 }
 
 
 .error_icon{
+    position: absolute;
+    right: 0.4rem;
     font-style: normal;
     font-family: var(--font-h3);
     font-weight: 900;
@@ -77,9 +81,12 @@ form > div > div{
     background-color: var(--color-red);
     border-radius: 100%;
     color: var(--color-white);
-    width: 1.6rem;
+    width: 1.4rem;
+    height:  1.3rem;
     text-align: center;
-    margin: 0.5rem;
+    margin-left: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .input_error{
@@ -96,7 +103,8 @@ form > div > div{
 
 /*link for signup/login page*/
 .text_link{
-font-size: 1.3rem;
+margin-top: 2rem;
+font-size: 1.5rem;
 }
 
 .text_link a{
@@ -107,4 +115,40 @@ font-size: 1.3rem;
 .hidden{
     display: none;
 }
+/*mobile*/
+@media (max-width: 320px){
 
+}
+/*small tablet*/
+@media (min-width: 600px){
+    form{
+        padding: 2rem 2.5rem;
+    }
+
+
+}
+
+/*small tablet*/
+@media (min-width: 768px){
+    form{
+        padding: 2rem 2.5rem;
+    }
+
+    .error_icon {
+        right: 0.6rem;
+        width: 1.5rem;
+        height: 1.4rem;
+      
+    }
+
+
+}
+
+/*laptop*/
+@media (min-width: 1024px){
+    form{
+        padding: 2rem 2.5rem;
+    }
+
+   
+}
