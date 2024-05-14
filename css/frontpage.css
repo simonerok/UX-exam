@@ -2,7 +2,7 @@
 
 /* images */
 img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 
@@ -13,10 +13,15 @@ img {
     width: 200px; 
 }
 
+.section_1 {
+    margin-bottom: 35px;
+}
+
 /* search bar */
 .search_container{
     display: flex;
-    margin-block: 26px;
+    margin-top: 16px;
+    width: 100%;
 }
 
 .search_box {
@@ -34,35 +39,38 @@ img {
 }
 
 input[type="text"] {
-  max-width: 100%;
+  width: 90%;
   border: none;
   box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
-  width: 200px;
   height: 40px;
   align-self: center;
   padding-inline: 12px;
 }
 
-/* UI card component */
-.card_container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+/* hide splash image mobile */
+.splash_img{
+    display: none;
 }
 
-.card_img{
+/* UI card component */
+.card_container {
+    display: grid;
+    margin: 0 auto;
+    align-items: center;
     width: 250px;
-    height: 200px;
+}
+
+.card_img {
+    width: 250px;
     object-fit: cover;
-    align-self: center;
 }
 
 /* card details */
-.card_details{
+.card_details {
     box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
-    width: 230px;
-    align-self: center;
-    padding: 16px;
+    width: 90%;
+    padding: 12px;
+    margin: 0 auto;
 }
 
 /* this removes all styling from the default button */
@@ -108,86 +116,44 @@ webkit is to make it work with the browser  */
     margin: 36px 0px 50px 0px;
 }
 
-/* hide & show items */
-.hidden{
-    display: none;
-    margin: 0px;
-}
 
-.show{
+/* SMALL TABLET */
+@media (min-width: 600px){
+/* section 1 */
+.splash_img{
     display: block;
+
 }
-
-/* Carousel */
-
-.carousel_container {
-    max-width: 100%; /* Limit the width */
-    overflow: hidden; /* Hide the overflow */
-    position: relative; /* For positioning the arrows */
-}
-
-.carousel {
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.5s ease;
-}
-
-.carousel_item{
-    margin-bottom: 12px;
-    min-width: 100%;
-}
-
-.categories{
-    background-color: var(--color-lightGreen);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-}
-
-.category_container{
-    display: flex;
-    gap: 6px;
-    padding-block: 12px;
+.section_1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
-}
+    gap: 16px;
+    margin-bottom: 105px;
+    }
 
-/* add to favorites */
-.add_container{
+    /* UI card */
+.card_container {
     display: flex;
-    gap: 6px;
-    padding-block: 12px;
-    align-items: center;
+    justify-content: center;
 }
-
-.heart{
-    width: 25px;
-    height: 25px;
+.card_details {
+    width: 100%;
+    padding: 12px;
+    align-self: center;
 }
-
-/* carousel arrow */
-.carousel_arrow_container {
-    position: absolute;
-    top: 25%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 10; /* Ensure it's above other elements */
-    width: 25px; /* Set a specific width */
-    height: 25px; /* Set a specific height */
 }
 
 
-
-.carousel_arrow_container.left {
-    left: 10px;
-    z-index: 5;
-}
-
-.carousel_arrow_container.right {
-    right: 10px;
-    z-index: 5;
-}
 
 /* TABLET */
+@media (min-width: 768px){
+.section_1 {
+        align-items: center;
+        gap: 26px;
+        margin-bottom: 105px;
+    }
+}
 
 
 /* DESKTOP */
