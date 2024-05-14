@@ -45,7 +45,7 @@ form input {
 
 
 input::placeholder{
-    color: var(--color-black);
+    color: var(--color-shadow);
 }
 
 label {
@@ -53,12 +53,19 @@ label {
     font-family: var(--font-body);
 }
 
-
 input[type=submit]{
-width: 100%;
-font-family: var(--font-h3);
-font-weight: 600;
-font-size: var(--font-h3);
+    width: 100%;
+    font-family: var(--font-h3);
+    font-weight: 600;
+    font-size: var(--font-h3);
+    background-color: var(--color-secondary);
+    border:  0.08rem solid var(--color-primary);
+    border-radius: 0rem;
+    color: var(--color-primary);
+    }
+
+
+input[type=submit]:hover{
 background-color: var(--color-primary);
 color: var(--color-white);
 }
@@ -104,7 +111,7 @@ form > div > div{
 /*link for signup/login page*/
 .text_link{
 margin-top: 2rem;
-font-size: 1.5rem;
+font-size: 1.2rem;
 }
 
 .text_link a{
