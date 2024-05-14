@@ -35,7 +35,7 @@ const FILTER_BY_AREA= "filter.php?a=Canadian";
 
 async function testApi(params) {
     try {
-      const response = await fetch("http://www.themealdb.com/api/json/v1/1/" + params);
+      const response = await fetch("https://www.themealdb.com/api/json/v1/1/" + params);
       if (response.ok) {
         const data = await response.json();
 
