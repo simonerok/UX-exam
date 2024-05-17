@@ -50,6 +50,7 @@ input[type="text"] {
 /* hide splash image mobile */
 .splash_img{
     display: none;
+    object-fit: cover;
 }
 
 /* UI card component */
@@ -122,7 +123,8 @@ webkit is to make it work with the browser  */
 /* section 1 */
 .splash_img{
     display: block;
-
+    width: 90%;
+    margin: 2rem auto;
 }
 .section_1 {
     display: grid;
@@ -142,9 +144,8 @@ webkit is to make it work with the browser  */
     padding: 12px;
     align-self: center;
 }
+
 }
-
-
 
 /* TABLET */
 @media (min-width: 768px){
@@ -152,8 +153,16 @@ webkit is to make it work with the browser  */
         align-items: center;
         gap: 26px;
         margin-bottom: 105px;
+        grid-template-columns: 1fr 1fr;
     }
+    .splash_img{
+    display: block;
+    width: 100%;
+    margin: 2rem auto;
 }
+
+}
+
 
 
 /* DESKTOP */
