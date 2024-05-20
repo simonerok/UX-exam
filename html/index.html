@@ -36,64 +36,89 @@
             updates from the culinary world. Go ahead and search for your favorite dish to discover
             our detailed, easy-to-follow recipes for you to try at home!</p>
             <div class="search_container">
-                <input type="text" placeholder="Seach for recipes">
+                <input type="text" placeholder="Seach for meal">
                 <button class="search_box">
                     <span class="search_box_icon">
                         <img src="../search_icon.svg" alt="Search Icon">
                     </span>
                 </button>
             </div>
-            <div class="error_container"></div>   
+            <p class="error_container"></p>   
         </article>
         <article>
            <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge"> 
         </article>
+
     </section> 
 
-    <article>
+    <section class="section_1_card">
                                     <!-- UI CARD COMPONENT -->
           <div class="card_container">
             <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
-            <div class="card_details">
+            <div class="card_details_container">
                 <div class="card_name_and_icon">
-                    <button class="btn_fav">
-                        <div class="search_box_icon">
-                            <img src="../heart-no-fill.svg" alt="heart Icon">
+                    <div class="fav_category_container">
+                       <button class="btn_fav">
+                            <div class="search_box_icon">
+                                <img src="../heart-no-fill.svg" alt="heart Icon">
+                            </div>
+                        </button>
+                        <div class="category_fav_flex">
+                           <div class="card_category_icon"><span>P</span></div>
+                           <p class="card_category">category</p> 
                         </div>
-                    </button> 
+                    </div>
+                     
                     <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
                 </div>
                 
                 <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
             </div>
             </div>  
-    </article> 
+    </section> 
    
     <section>
-            <h1>Browse by category</h1>
-            
-                                    <!-- UI CARD COMPONENT -->
-            <article>
-                <div class="card_container">
-                <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
-                <div class="card_details">
-                    <div class="card_name_and_icon">
+        <h1>Browse by category</h1>
+        <div id="meal_container"></div> <!-- New container for the meals -->
+    </section>
+    
+    <!-- UI CARD COMPONENT AS TEMPLATE -->
+    <section>
+        <h1>Browse by category</h1>
+        <div id="meal_container" class="grid_container">
+            <!-- Meal cards go here -->
+        </div>
+    </section>
+    
+    <!-- UI CARD COMPONENT AS TEMPLATE -->
+    <template id="template_card">
+        <div class="card_container">
+            <img class="card_img" src="" alt="image of the meal">
+            <div class="card_details_container">
+                <div class="card_name_and_icon">
+                    <div class="fav_category_container">
                         <button class="btn_fav">
                             <div class="search_box_icon">
-                                <img src="../heart-no-fill.svg" alt="heart Icon">
+                                <img src="../heart-no-fill.svg" alt="">
                             </div>
-                        </button> 
-                        <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
+                        </button>
+                        <div class="category_fav_flex">
+                            <div class="card_category_icon"><span></span></div>
+                            <p class="card_category"></p> 
+                        </div>
                     </div>
-                    
-                    <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+                    <h3 class="card_title hyphenate"></h3>
                 </div>
+                <div class="flex">
+                    <p class="card_area"></p>
+                    <a href="" class="card_youtube"></a>
                 </div>
-            </article>
-            <div class="arrow_container">
-                <img class="hidden arrow_down" src="../chevron-down.svg" alt="down arrow">
             </div>
-    </section>
+        </div>
+    </template>
+            
+        
+    
     </main>
     <footer>
         <div class="footer-container">

@@ -1,9 +1,10 @@
-/* MOBILE */
+@import url('styles/variables.css');
 
 /* images */
 img {
     width: 100%;
     height: auto;
+    aspect-ratio: 1/1;
 }
 
 /* class to add if you want to make "orddeling ved linjeskift" */
@@ -13,9 +14,7 @@ img {
     width: 200px; 
 }
 
-.section_1 {
-    margin-bottom: 35px;
-}
+
 
 /* search bar */
 .search_container{
@@ -53,25 +52,39 @@ input[type="text"] {
     object-fit: cover;
 }
 
-/* UI card component */
+/*************** UI card component general styling *********/
+
 .card_container {
     display: grid;
-    margin: 0 auto;
+    grid-auto-flow: row;
     align-items: center;
-    width: 250px;
+    width: 200px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
 }
 
 .card_img {
-    width: 250px;
+    width: 100%;
     object-fit: cover;
 }
 
 /* card details */
-.card_details {
-    box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
-    width: 90%;
+.card_details_container {
+    box-shadow: 0px 0px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
+    width: 100%;
     padding: 12px;
     margin: 0 auto;
+    min-height: 230px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.flex {
+    grid-row-start: 2;
+}
+
+.flex p {
+    margin-bottom: 4px;
 }
 
 /* this removes all styling from the default button */
@@ -83,10 +96,28 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.card_name_and_icon{
-    display: grid;
+.fav_category_container{
+    display: flex;
     justify-content: space-between;
+    margin-bottom: 12px;
 }
+
+.category_fav_flex{
+    display: flex;
+    gap: 8px;
+
+}
+
+.card_category_icon{
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-lightGreen);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+
 
 /* this ensures the text get hidden after X number of charators. 
 webkit is to make it work with the browser  */
@@ -96,7 +127,7 @@ webkit is to make it work with the browser  */
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
+  width: 100%;
   height: calc(1.2em * 3);
 }
 
@@ -104,62 +135,83 @@ webkit is to make it work with the browser  */
     padding-block: 16px;
 }
 
-/* arrow down */
-.arrow_down{
-    width: 25px;
-    height: 25px;
-    align-self: center;
-}
 
-.arrow_container {
-    display: flex;
-    justify-content: center;
-    margin: 36px 0px 50px 0px;
-}
 
 
 /* SMALL TABLET */
 @media (min-width: 600px){
-/* section 1 */
-.splash_img{
-    display: block;
-    width: 90%;
-    margin: 2rem auto;
-}
+
 .section_1 {
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: center;
     gap: 16px;
-    margin-bottom: 105px;
     }
 
-    /* UI card */
-.card_container {
-    display: flex;
-    justify-content: center;
+.section_1_card {
+    margin-bottom: 105px;
 }
-.card_details {
+
+
+/*  UI CARD */
+.card_details_container {
+    min-height: 230px;
+    min-width: 230px;
+}
+
+
+.card_container {
+    display: grid;
+    grid-auto-flow: column;
     width: 100%;
-    padding: 12px;
-    align-self: center;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-right: 2rem;
+}
+
+.card_img {
+    object-fit: cover;
+    height: 230px;
+    aspect-ratio: 1 / 1;
+    object-position: center; 
+    width: 100%;
 }
 
 }
 
 /* TABLET */
 @media (min-width: 768px){
-.section_1 {
+    .section_1 {
         align-items: center;
         gap: 26px;
-        margin-bottom: 105px;
         grid-template-columns: 1fr 1fr;
     }
     .splash_img{
     display: block;
     width: 100%;
     margin: 2rem auto;
-}
+    }
+
+    .section_1_card{
+        margin-bottom: 105px;
+    }
+
+    /* auto layout UI CARD  */
+
+
+    .card_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    }
+
+    #meal_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 2rem;
+    }
 
 }
 
