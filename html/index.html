@@ -9,21 +9,21 @@
     <script src="/js/frontpage.js" defer></script>
     <script src="/js/script.js" defer></script>
     <script src="/js/API.js" defer></script>
+    <script src="/js/menu2.js" defer></script>
     <title>Home</title>
 </head>
 <body>
     <header class="banner">
         <nav class="main-menu">
             <img src="/icons/Comedo_red_logo.svg" alt="Logo" class="logo">
-        <button class="toggle-btn">menu</button>
+        <button class="toggle-btn">☰</button>
         <ul>
-            <li><a href="#0">Breakfast</a></li>
-            <li><a href="#0">Lunch</a></li>
-            <li><a href="#0">Dinner</a></li>
-            <li><a href="#0">Dessert</a></li>
+            <li class="li"><a href="" class="nav_link"></a></li>
+        </ul>
+        <div class="icons_menu">
             <img src="/icons/heart-solid.svg" alt="heart" class="heart">
             <img src="/icons/user-solid.svg" alt="user" class="user">
-        </ul>
+        </div>
     </nav>
     </header>
     <main>
@@ -45,10 +45,10 @@
             <p class="error_container"></p>  
         </article>
         <article>
-           <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge">
+           <img class="splash_img" src="/placeholder_food.jpg" alt="food image">
         </article>
  
-    </section>
+        </section>
  
     <section class="section_1_card">
                                     <!-- UI CARD COMPONENT -->
@@ -76,19 +76,35 @@
             </div>  
     </section>
    
+ 
+   <label>Filter</label>
+ 
+   <select name="category" id="filter_btn">
+    <option selected disabled>Select</option>
+    <option value="Beef">Beef</option>
+    <option value="Chicken">Chicken</option>
+    <option value="Goat">Goat</option>
+    <option value="Lamb">Lamb</option>
+    <option value="Pork">Pork</option>
+    <option value="Seafood">Seafood</option>
+    <option value="Vegan">Vegan</option>
+    <option value="Vegetarian">Vegetarian</option>
+    <option value="Pasta">Pasta</option>
+    <option value="Starter">Starter</option>
+    <option value="Side">Side</option>
+    <option value="Breakfast">Breakfast</option>
+    <option value="Dessert">Dessert</option>
+    <option value="Miscellaneous">Miscellaneous</option>
+   </select>
+ 
     <section>
         <h1>Browse by category</h1>
-        <div id="meal_container"></div> <!-- New container for the meals -->
-    </section>
-   
-    <!-- UI CARD COMPONENT AS TEMPLATE -->
-    <section>
-        <h1>Browse by category</h1>
-        <div id="meal_container" class="grid_container">
-            <!-- Meal cards go here -->
+        <div id="meal_container">
+                <!-- cloned meals go here -->
         </div>
     </section>
    
+ 
     <!-- UI CARD COMPONENT AS TEMPLATE -->
     <template id="template_card">
         <div class="card_container">
@@ -115,22 +131,11 @@
             </div>
         </div>
     </template>
-    
-    <section id="explore_more">
-        <h2>Explore more recipes</h2>
-        <div id="carousel_container">
-
-            <section id="carousel">
-                <button class="controls" id="prevButton"><img src="../chevron-left.svg" class="control_icon" alt="previous icon chevron"></button>
-                <div class="recipes_carousel"></div>
-                <button class="controls" id="nextButton"><img src="../chevron-right.svg" class="control_icon" alt="next icon chevron"></button>
-            </section>
-        </div>
-
-    </section>
+           
        
    
     </main>
+has context menu
     <template id="card_template">
         <article>
             <!-- UI CARD CAROUSEL COMPONENT -->
