@@ -1,6 +1,0 @@
-@import 'variables.css';
-
-
-.user-favourites-container{
-    margin: var(--margin-desktop);
-}

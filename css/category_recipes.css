@@ -1,56 +1,72 @@
-
+/* styles.css */
 body {
-    font-family: Arial, sans-serif; /* Adjust font-family as needed */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-@media (min-width: 320px) {
-    .filter-container {
-        display: grid;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
-        box-shadow: 1.25rem 1.25rem 1.25rem var(--box-shadow);
-    }
-
-    .filter-bar > .filter-option{
-        flex-direction: row;
-    }
-
-    .filter-option {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .filter-option > img{
-        width: 30%;
-        height: 30%;
-        margin-bottom: 0.5rem;
-        margin-top: 1rem;
-    }
-
-    .filter-label{
-        justify-content: center;
-    }
-
-    .filter-option input[type="checkbox"] {
-        display: none; /* Hide the checkbox itself */
-    }
-
-    .filter-option .filter-label {
-        padding: 0.625rem 1.25rem;
-        border-radius: 1.25rem;
-        display: block;
-        text-align: center;
-        transition: 0.3s;
-        cursor: pointer;
-        color: var(--color-primary);
-    }
-
-
-    /* .filter-option .filter-label:hover {
-        color: pink;
-    } */
-}
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 1em;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  #filter-bar {
+    margin: 1em;
+    text-align: center;
+  }
+  
+  #recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+    position: relative;
+    padding-bottom: 10px; /* Added to make space for the heart icon */
+  }
+  
+  .recipe-card img {
+    width: 100%;
+  }
+  
+  .recipe-card h3 {
+    text-align: center;
+    padding: 0.5em;
+  }
+  
+  .recipe-card .fa-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: grey; /* Default color */
+  }
+  
+  .recipe-card .fa-heart.fas {
+    color: red; /* Color when favorited */
+  }
+  

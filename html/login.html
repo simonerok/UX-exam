@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,42 +11,51 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Login</title>
-   <script src="../js/login.js" defer></script>
+    <script type="module" src="../js/login.js" defer></script>
 </head>
-
+ 
 <body>
     <main>
         <section id="login_section" class="">
             <h1>Welcome back!</h1>
             <h2 class="under_title">Please login here</h2>
             <form action="POST" id="login_form" aria-label="loginform">
+ 
+ 
+                <p id="error_message_general" class="error_message  hidden"> <img src="../img/error.svg"
+                        id="error_icon_general" class="error_icon  hidden" alt="error icon"> Wrong email or password
+                </p>
+ 
                 <div class="email_container">
                     <label for="email">Email*</label>
                     <div>
                         <input id="email_input" type="email" name="email" placeholder="youremail@mail.com"
-                        pattern="^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$" required>
-                        <span id="error_icon_email" class="error_icon hidden">!</span>
+                            pattern="^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$" required>
+                        <img src="../img/error.svg" id="error_icon_email" class="error_icon  hidden" alt="error icon">
                     </div>
                     <p id="error_message_email" class="error_message hidden"> Please enter a valid email</p>
                 </div>
                 <div class="password_container">
-
+ 
                     <label for="password">Password*</label>
                     <div>
-                        <input id="password_input" type="password" name="password" minlength="8" maxlength="20"
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,20}$" required>
-
-                        <span id="error_icon_password" class="error_icon hidden">!</span>
+                        <input id="password_input" type="password" name="password" minlength="2" maxlength="20"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#.])[A-Za-z\d@$!%*?&#.]{8,20}$"
+                            required>
+ 
+ 
+                        <img src="../img/error.svg" id="error_icon_password" class="error_icon  hidden"
+                            alt="error icon">
                     </div>
                     <p id="error_message_password" class="error_message hidden"> Password invalid</p>
                 </div>
                 <input aria-label="login" type="submit" value="LOGIN">
             </form>
-            <h3 class="text_link">Don't have an account? <span><a id="signup_link"
-                        aria-label="signup link" href="signup.html">Signup here!</a></span></h3>
+            <h3 class="text_link">Don't have an account? <span><a id="signup_link" aria-label="signup link"
+                        href="signup.html">Signup here!</a></span></h3>
         </section>
-
+ 
     </main>
 </body>
-
+ 
 </html>

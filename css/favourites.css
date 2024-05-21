@@ -1,0 +1,37 @@
+@import 'variables.css';
+
+.user-favourites-container {
+    margin: var(--margin-desktop);
+}
+
+.recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+    position: relative;
+    padding-bottom: 10px; /* Added to make space for the heart icon */
+    margin: 1em; /* Add some margin for spacing */
+}
+
+.recipe-card img {
+    width: 100%;
+}
+
+.recipe-card h3 {
+    text-align: center;
+    padding: 0.5em;
+}
+
+.recipe-card .fa-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: grey; /* Default color */
+}
+
+.recipe-card .fa-heart.fas {
+    color: red; /* Color when favorited */
+}

@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/frontpage.css">
+    <script src="/js/frontpage.js" defer></script>
     <script src="/js/script.js" defer></script>
+    <script src="/js/API.js" defer></script>
     <title>Home</title>
 </head>
 <body>
@@ -19,79 +21,137 @@
             <li><a href="#0">Lunch</a></li>
             <li><a href="#0">Dinner</a></li>
             <li><a href="#0">Dessert</a></li>
-            <div class="icons_menu">
-                <img src="/icons/heart-solid.svg" alt="heart" class="heart">
-                <img src="/icons/user-solid.svg" alt="user" class="user">
-            </div>
+            <img src="/icons/heart-solid.svg" alt="heart" class="heart">
+            <img src="/icons/user-solid.svg" alt="user" class="user">
         </ul>
     </nav>
     </header>
     <main>
-         <section class="section_1">
+       
+        <section class="section_1">
         <article>
             <h1>Search for Recipes</h1>
             <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
             updates from the culinary world. Go ahead and search for your favorite dish to discover
             our detailed, easy-to-follow recipes for you to try at home!</p>
             <div class="search_container">
-                <input type="text" placeholder="Seach for recipes">
+                <input type="text" placeholder="Seach for meal">
                 <button class="search_box">
                     <span class="search_box_icon">
                         <img src="../search_icon.svg" alt="Search Icon">
                     </span>
                 </button>
-            </div>   
+            </div>
+            <p class="error_container"></p>  
         </article>
         <article>
-           <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge"> 
+           <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge">
         </article>
-    </section> 
-
-    <article>
+ 
+    </section>
+ 
+    <section class="section_1_card">
                                     <!-- UI CARD COMPONENT -->
           <div class="card_container">
             <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
-            <div class="card_details">
+            <div class="card_details_container">
                 <div class="card_name_and_icon">
-                    <button class="btn_fav">
-                        <div class="search_box_icon">
-                            <img src="../heart-no-fill.svg" alt="heart Icon">
+                    <div class="fav_category_container">
+                       <button class="btn_fav">
+                            <div class="search_box_icon">
+                                <img src="../heart-no-fill.svg" alt="heart Icon">
+                            </div>
+                        </button>
+                        <div class="category_fav_flex">
+                           <div class="card_category_icon"><span>P</span></div>
+                           <p class="card_category">category</p>
                         </div>
-                    </button> 
+                    </div>
+                     
                     <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
                 </div>
-                
+               
                 <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
             </div>
             </div>  
-    </article> 
+    </section>
    
     <section>
-            <h1>Browse by category</h1>
-            
-                                    <!-- UI CARD COMPONENT -->
-            <article>
-                <div class="card_container">
-                <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
-                <div class="card_details">
+        <h1>Browse by category</h1>
+        <div id="meal_container"></div> <!-- New container for the meals -->
+    </section>
+   
+    <!-- UI CARD COMPONENT AS TEMPLATE -->
+    <section>
+        <h1>Browse by category</h1>
+        <div id="meal_container" class="grid_container">
+            <!-- Meal cards go here -->
+        </div>
+    </section>
+   
+    <!-- UI CARD COMPONENT AS TEMPLATE -->
+    <template id="template_card">
+        <div class="card_container">
+            <img class="card_img" src="" alt="image of the meal">
+            <div class="card_details_container">
+                <div class="card_name_and_icon">
+                    <div class="fav_category_container">
+                        <button class="btn_fav">
+                            <div class="search_box_icon">
+                                <img src="../heart-no-fill.svg" alt="">
+                            </div>
+                        </button>
+                        <div class="category_fav_flex">
+                            <div class="card_category_icon"><span></span></div>
+                            <p class="card_category"></p>
+                        </div>
+                    </div>
+                    <h3 class="card_title hyphenate"></h3>
+                </div>
+                <div class="flex">
+                    <p class="card_area"></p>
+                    <a href="" class="card_youtube"></a>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <section id="explore_more">
+        <h2>Explore more recipes</h2>
+        <div id="carousel_container">
+
+            <section id="carousel">
+                <button class="controls" id="prevButton"><img src="../chevron-left.svg" class="control_icon" alt="previous icon chevron"></button>
+                <div class="recipes_carousel"></div>
+                <button class="controls" id="nextButton"><img src="../chevron-right.svg" class="control_icon" alt="next icon chevron"></button>
+            </section>
+        </div>
+
+    </section>
+       
+   
+    </main>
+    <template id="card_template">
+        <article>
+            <!-- UI CARD CAROUSEL COMPONENT -->
+            <div class="carousel_card_container">
+                <img class="carousel_card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+                <div class="carousel_card_details">
                     <div class="card_name_and_icon">
                         <button class="btn_fav">
                             <div class="search_box_icon">
                                 <img src="../heart-no-fill.svg" alt="heart Icon">
                             </div>
-                        </button> 
-                        <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
+                        </button>
+                        <h3 class="card_title">Seasoned pokebowl with greens</h3>
                     </div>
-                    
-                    <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+ 
+                    <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a
+                        delightful mix of fresh ingredients.</p>
                 </div>
-                </div>
-            </article>
-            <div class="arrow_container">
-                <img class="hidden arrow_down" src="../chevron-down.svg" alt="down arrow">
             </div>
-    </section>
-    </main>
+        </article>
+    </template>
     <footer>
         <div class="footer-container">
             <div id="footer_comedo">

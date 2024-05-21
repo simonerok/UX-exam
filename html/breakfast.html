@@ -6,71 +6,36 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/category_recipes.css">
+    <script src="/js/fetch_category_and_recipe.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
     <title>Breakfast Recipes</title>
 </head>
 <body>
-    <header></header>
+    <header>
+      <h1>Breakfast Recipes</h1>
+      <nav>
+        <ul>
+          <li><a href="breakfast.html">Breakfast</a></li>
+          <li><a href="user_favourites.html">My Favourites</a></li>
+        </ul>
+      </nav>
+    </header>
+    
     <main>
-        <div class="breakfast-recipes-container">
-            <section class="searchbar">
-                <h1>Searchbar</h1>
-            </section>
-
-            <section class="filterbar">
-                <div class="filter-container">
-                    <div class="filter-option">
-                       <img src="/img/icons_vegan.svg" alt="Vegan filter">
-                        <button id="#">VEGAN</button>
-                    </div>
-                    <div class="filter-option">
-                        <img src="/img/icons_glutenfree.svg" alt="Glutenfree filter">
-                        <input type="checkbox" name="glutenfree">
-                        <span class="filter-label">GLUTENFREE</span>
-                    </div>
-                    <div class="filter-option">
-                        <img src="/img/icons_sugarfree.svg" alt="Sugarfree filter">
-                        <input type="checkbox" name="sugarfree">
-                        <span class="filter-label">SUGARFREE</span>
-                    </div>
-                    <div class="filter-option">
-                        <img src="/img/icons_vegetarian.svg" alt="Vegetarian filter">
-                        <input type="checkbox" name="vegetarian">
-                        <span class="filter-label">VEGETARIAN</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="breakfast-recipes-container">
-                <h1>Recipes</h1>
-            </section>
-        </div>
+      <section id="filter-bar">
+        <select id="ingredient-select">
+          <option value="">Ingredients</option>
+          <!-- Ingredients will be populated dynamically -->
+        </select>
+      </section>
+      
+      <section id="recipes">
+        <!-- Recipes will be displayed here -->
+      </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div id="footer_comedo">
-                <img src="/img/Comedo_red_logo.svg" alt="ComedoLogo">
-                
-                <p>Stay informed with curated recipes, made to fit any form of dietary preferences. Stay informed on new ideas for dinner and any other meal. Join our vibrant  community and elevate your journey with Comedo. 
-                    Newsletter. Subscribe now!</p>
-            </div>
-
-            <div id="footer_navlinks">
-                <h1>COMPANY</h1>
-                <a href="#">About us</a>
-                <a href="#">Contact us</a>
-                <a href="#">Terms & Conditions </a>
-
-            </div>
-
-            <div id="footer_some">
-                <h1>SOCIALS</h1>
-                <!-- Husk at fjerne "/" -->
-                <a href="#"><img src="/img/icons_instagram.svg" alt="ComedoInstagram"></a>
-                <a href="#"><img src="/img/icons_facebook.svg" alt="ComedoFacebook"></a>
-                <a href="#"><img src="/img/icons_linkedin.svg" alt="ComedoLinkedin"></a>
-                <a href="#"><img src="/img/icons_youtube.svg" alt="ComedoYoutube"></a>
-            </div>
-        </div>
-    </footer>
-</body>
+  
+    <script defer src="fetch_category_and_recipe.js"></script>
+  </body>
 </html>
