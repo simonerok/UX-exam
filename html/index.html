@@ -77,19 +77,35 @@
             </div>  
     </section> 
    
+
+   <label>Filter</label>
+
+   <select name="category" id="filter_btn">
+    <option selected disabled>Select</option>
+    <option value="Beef">Beef</option>
+    <option value="Chicken">Chicken</option>
+    <option value="Goat">Goat</option>
+    <option value="Lamb">Lamb</option>
+    <option value="Pork">Pork</option>
+    <option value="Seafood">Seafood</option>
+    <option value="Vegan">Vegan</option>
+    <option value="Vegetarian">Vegetarian</option>
+    <option value="Pasta">Pasta</option>
+    <option value="Starter">Starter</option>
+    <option value="Side">Side</option>
+    <option value="Breakfast">Breakfast</option>
+    <option value="Dessert">Dessert</option>
+    <option value="Miscellaneous">Miscellaneous</option>
+   </select>
+
     <section>
         <h1>Browse by category</h1>
-        <div id="meal_container"></div> <!-- New container for the meals -->
+        <div id="meal_container">
+                <!-- cloned meals go here -->
+        </div> 
     </section>
     
-    <!-- UI CARD COMPONENT AS TEMPLATE -->
-    <section>
-        <h1>Browse by category</h1>
-        <div id="meal_container" class="grid_container">
-            <!-- Meal cards go here -->
-        </div>
-    </section>
-    
+
     <!-- UI CARD COMPONENT AS TEMPLATE -->
     <template id="template_card">
         <div class="card_container">

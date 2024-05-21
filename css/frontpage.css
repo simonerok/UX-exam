@@ -15,7 +15,6 @@ img {
 }
 
 
-
 /* search bar */
 .search_container{
     display: flex;
@@ -115,6 +114,7 @@ input[type="text"] {
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 

@@ -52,7 +52,7 @@ async function testApi(params) {
   testApi(FILTER_BY_AREA);
 
 
-/****************************************  SOFIA KODE ************************************************/
+/****************************************  FRONTPAGE ************************************************/
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
 
@@ -161,3 +161,34 @@ searchButton.addEventListener('click', async function() {
 });
 
 
+/*  fetch data for filterbutton */
+
+const select = document.querySelector('#filter_btn');
+const template = document.querySelector('#template_card');
+const container = document.querySelector('#meal_container');
+
+/* fetch data based on the selected "change" in the filter button */
+select.addEventListener('change', async function() {
+    const category = select.value;
+
+    // Fetch data from the API
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const data = await response.json();
+
+    // Clear the container
+    container.innerHTML = '';
+
+    // Create a new card for each meal
+    data.meals.forEach(meal => {
+        // Clone the template
+        const clone = template.content.cloneNode(true);
+
+        // Populate the clone with data
+        clone.querySelector('.card_img').src = meal.strMealThumb;
+        clone.querySelector('.card_title').textContent = meal.strMeal;
+        clone.querySelector('.card_category').textContent = category;
+
+        // Append the clone to the container
+        container.appendChild(clone);
+    });
+});
