@@ -1,45 +1,59 @@
 {
-    "users": [
-      {
-        "id": "1",
-        "email": "user@mail.com",
-        "password": "Password.1"
-      },
-      {
-        "id": "2",
-        "email": "user2@mail.com",
-        "password": "Password.2"
-      },
-      {
-        "id": "92c7",
-        "email": "myemail@mail.com",
-        "password": "Password.3"
-      },
-      {
-        "id": "cad4",
-        "email": "mail@mail.com",
-        "password": "Password.12"
-      },
-      {
-        "id": "d142",
-        "email": "user4@mail.dk",
-        "password": "Password.2"
-      },
-      {
-        "id": "1e26",
-        "email": "mat@mail.dk",
-        "password": "Password.12"
-      },
-      {
-        "id": "a830",
-        "email": "newuser@mail.dk",
-        "password": "Password.12"
-      },
-      {
-        "id": "9de7",
-        "email": "mail2@mail.com",
-        "password": "Password.2"
-      }
-    ]
-  }
-   
+  "users": [
+    {
+      "id": "1",
+      "email": "user@mail.com",
+      "password": "Password.1"
+    },
+    {
+      "id": "2",
+      "email": "user2@mail.com",
+      "password": "Password.2"
+    },
+    {
+      "id": "92c7",
+      "email": "myemail@mail.com",
+      "password": "Password.3"
+    },
+    {
+      "id": "cad4",
+      "email": "mail@mail.com",
+      "password": "Password.12"
+    },
+    {
+      "id": "d142",
+      "email": "user4@mail.dk",
+      "password": "Password.2"
+    },
+    {
+      "id": "1e26",
+      "email": "mat@mail.dk",
+      "password": "Password.12"
+    },
+    {
+      "id": "a830",
+      "email": "newuser@mail.dk",
+      "password": "Password.12"
+    },
+    {
+      "id": "9de7",
+      "email": "mail2@mail.com",
+      "password": "Password.2"
+    },
+    {
+      "id": "4473",
+      "email": "mail@maily.com",
+      "password": "Password.24"
+    },
+    {
+      "id": "46f0",
+      "email": "mat1@mail.dk",
+      "password": "Password.12"
+    },
+    {
+      "id": "d32b",
+      "email": "mail7@mail.com",
+      "password": "Password.12"
+    }
+  ]
+}
