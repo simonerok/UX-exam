@@ -31,82 +31,89 @@
         
         <section class="section_1">
         <article>
-            <h1>Search for Recipes</h1>
+            <h1 >Search for Recipes</h1>
             <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
             updates from the culinary world. Go ahead and search for your favorite dish to discover
             our detailed, easy-to-follow recipes for you to try at home!</p>
-            <div class="search_container">
-                <input type="text" placeholder="Seach for meal">
-                <button class="search_box">
+
+            <form role="search" class="search_container">
+                <label for="search_input" class="visually_hidden">Search for meal</label>
+                <input type="search" id="search_input" placeholder="Search for meal">
+                <button type="submit" class="search_box" id="search_button">
                     <span class="search_box_icon">
                         <img src="../search_icon.svg" alt="Search Icon">
                     </span>
                 </button>
-            </div>
-            <p class="error_container"></p>   
+            </form>
+              
         </article>
         <article>
-           <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge"> 
+           <img class="splash_img" src="/placeholder_food.jpg" alt="food image"> 
         </article>
 
+        
     </section> 
-
-    <section class="section_1_card">
-                                    <!-- UI CARD COMPONENT -->
-          <div class="card_container">
+    <h2 id="meal_of_th_day">Meal of the day</h2>
+    <div class="search_results"></div>
+    <div id="meal_of_the_day_container"> <!-- fetched meal go here in the html structure --></div>
+    
+    <!--  template with styling for the fecthed meals -->
+    <template id="section_1_card">
+        <div class="card_container">
             <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
             <div class="card_details_container">
                 <div class="card_name_and_icon">
                     <div class="fav_category_container">
-                       <button class="btn_fav">
+                        <button class="btn_fav">
                             <div class="search_box_icon">
                                 <img src="../heart-no-fill.svg" alt="heart Icon">
                             </div>
                         </button>
                         <div class="category_fav_flex">
-                           <div class="card_category_icon"><span>P</span></div>
-                           <p class="card_category">category</p> 
+                            <div class="card_category_icon"><span>P</span></div>
+                            <p class="card_category">category</p> 
                         </div>
                     </div>
-                     
                     <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
                 </div>
-                
                 <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
             </div>
-            </div>  
-    </section> 
+        </div>  
+    </template>
    
 
-   <label>Filter</label>
-
-   <select name="category" id="filter_btn">
-    <option selected disabled>Select</option>
-    <option value="Beef">Beef</option>
-    <option value="Chicken">Chicken</option>
-    <option value="Goat">Goat</option>
-    <option value="Lamb">Lamb</option>
-    <option value="Pork">Pork</option>
-    <option value="Seafood">Seafood</option>
-    <option value="Vegan">Vegan</option>
-    <option value="Vegetarian">Vegetarian</option>
-    <option value="Pasta">Pasta</option>
-    <option value="Starter">Starter</option>
-    <option value="Side">Side</option>
-    <option value="Breakfast">Breakfast</option>
-    <option value="Dessert">Dessert</option>
-    <option value="Miscellaneous">Miscellaneous</option>
-   </select>
 
     <section>
-        <h1>Browse by category</h1>
+        <h2 id="browse_by_category" class="hyphenate">Browse by category</h2>
+        
+        <div class="filter">
+            <label>Filter</label>
+            <select name="category" id="filter_btn">
+                <option selected disabled>Select</option>
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Goat">Goat</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Pork">Pork</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Starter">Starter</option>
+                <option value="Side">Side</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+        </div>
+
         <div id="meal_container">
-                <!-- cloned meals go here -->
+            <!-- cloned meals go here -->
         </div> 
     </section>
     
 
-    <!-- UI CARD COMPONENT AS TEMPLATE -->
+    <!-- UI CARD COMPONENT FOR FILTER -->
     <template id="template_card">
         <div class="card_container">
             <img class="card_img" src="" alt="image of the meal">
