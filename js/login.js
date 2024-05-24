@@ -53,8 +53,10 @@ form.addEventListener("submit", async function (event) {
             //removing the general error message
             generalErrorIcon.classList.add("hidden");
             generalErrorMssg.classList.add("hidden");
-            alert("Youre logged in")
-            // !!! TO DO: somehow store email in session storage to have the user be "logged in"
+        
+            sessionStorage.setItem('userLogged', emailValue);
+
+            window.location.href="index.html";
  
         } else {
             //showing the general error message (abput email not matching)

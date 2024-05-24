@@ -54,13 +54,19 @@ form.addEventListener('submit', async function (e) {
      
         //if user doesnt exist, add user to database, else set error styles and throw error
         if (!userExists) {
-            showPopup();
-            //calling async function for adding the user to the JSON 'database'
+            
+        //calling async function for adding the user to the JSON 'database'
         await addUserToDatabase(emailValue, passwordValue);
+
+    
+  
+             //To avoid the user accesing confirmation page by mistake,
+             // the fromSignup will be stored in sessionstorage to check that the user is redirected from signup
+             sessionStorage.setItem('fromSignup', 'true');
+  
+             // Redirect to the confirmation page
+             window.location.href = "signupconfirmation.html";
  
-        //TODO: code what to do after succesfull signup - redirect ro w/e  
-       
-        alert("Successfully created your account");
 
         }else{
             setErrorStyles(emailInput, emailErrorMssg, emailErrorIcon, "There is already an account with this email", false);
@@ -73,14 +79,6 @@ form.addEventListener('submit', async function (e) {
         console.error(error.message);
     }
 });
-
-function showPopup() {
-    document.getElementById('popup').classList.remove('hidden');
-}
-
-function closePopup() {
-    document.getElementById('popup').classList.add('hidden');
-}
  
  
 // Notice there is TWO eventlisteners for checking validity,

@@ -1,5 +1,60 @@
 'use strict';
 
+
+
+//logged user and logoout
+const logout_btn = document.getElementById('logout');
+//stores true/false whether a user is logged in
+let isLoggedIn;
+
+//gets the email of the logged in user from session storage
+function getLoggedUser() {
+    console.log("login test");
+    let loggedUser = sessionStorage.getItem("userLogged");
+
+    return loggedUser;
+}
+
+//returns true or false whether an user is logged in
+function isLogged() {
+    const loggedUser = getLoggedUser();
+
+    if (loggedUser) {
+        isLoggedIn = true;
+        console.log(loggedUser + " is logged in");
+        toggleLogoutButton()
+    } else {
+        isLoggedIn = false;
+        console.log("no user is logged in");
+    }
+    return isLoggedIn;
+}
+
+//removes the email from session storage, and sets islogged to false
+function logout() {
+    console.log("logout");
+    isLoggedIn = false;
+    sessionStorage.removeItem("userLogged");
+    toggleLogoutButton()
+}
+
+
+
+function toggleLogoutButton(){
+    console.log("test");
+    
+if (isLoggedIn) {
+    logout_btn.classList.remove("hidden");
+    logout_btn.addEventListener("click", logout);
+} else if (!isLoggedIn) {
+    logout_btn.classList.add("hidden");
+}
+}
+
+getLoggedUser();
+isLogged();
+toggleLogoutButton();
+
 //Header//
 // Lav variablen "btn", der henviser til ".toggle-btn"
 const btn = document.querySelector(".toggle-btn");
@@ -8,28 +63,27 @@ const menu = document.querySelector(".main-menu");
 
 // Lav funktionen "toggleMenu()" med følgende funktionalitet
 function toggleMenu() {
-  // a) toggle klassen "shown" på menu vha. classList.toggle
-menu.classList.toggle("shown");
+    // a) toggle klassen "shown" på menu vha. classList.toggle
+    menu.classList.toggle("shown");
 
-  // b) lav variablen "menuShown", som siger, at menu-variablen indeholder klassen "shown" via classList.contains("")
-const menuShown = menu.classList.contains("shown");
+    // b) lav variablen "menuShown", som siger, at menu-variablen indeholder klassen "shown" via classList.contains("")
+    const menuShown = menu.classList.contains("shown");
 
-  // c) spørg om "menuShown" i if-sætningen nedenfor (=> if (menuShown)), og udskift teksten
-if (menuShown) {
-    console.log(menuShown); // se i konsollen
-    // sæt btn.textContent til "Luk", hvis menuShown er "true"
-    btn.textContent = "Luk";
-} else {
-    console.log(menuShown); // se i konsollen
-    // sæt btn.textContent til "Menu", hvis menuShown er "false"
-    btn.textContent = "Menu";
-}
+    // c) spørg om "menuShown" i if-sætningen nedenfor (=> if (menuShown)), og udskift teksten
+    if (menuShown) {
+        console.log(menuShown); // se i konsollen
+        // sæt btn.textContent til "Luk", hvis menuShown er "true"
+        btn.textContent = "Luk";
+    } else {
+        console.log(menuShown); // se i konsollen
+        // sæt btn.textContent til "Menu", hvis menuShown er "false"
+        btn.textContent = "Menu";
+    }
 }
 // "toggleMenu()" slutter her
 
 // Tilføj et klik-event til "btn", der sætter toggleMenu-funktionen i gang
 btn.addEventListener("click", toggleMenu);
-
 
 
 
@@ -65,7 +119,7 @@ async function fetchRecipes(ingredient = '') {
         const url = API_BASE_URL + 'filter.php?c=Breakfast';
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (ingredient) {
             const filteredRecipes = await filterByIngredient(data.meals, ingredient);
             displayRecipes(filteredRecipes);
@@ -172,3 +226,5 @@ function initializeFavourites() {
 
 // Run this to ensure the hearts reflect the correct state
 initializeFavourites();
+
+

@@ -461,3 +461,8 @@ footer h1, h2{
     }
  
 }
+
+
+.hidden{
+    display: none;
+}

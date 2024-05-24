@@ -31,29 +31,19 @@
       "password": "Password.12"
     },
     {
-      "id": "a830",
-      "email": "newuser@mail.dk",
-      "password": "Password.12"
-    },
-    {
-      "id": "9de7",
-      "email": "mail2@mail.com",
+      "id": "bcdf",
+      "email": "mail5@mail.com",
       "password": "Password.2"
     },
     {
-      "id": "4473",
-      "email": "mail@maily.com",
-      "password": "Password.24"
+      "id": "ea14",
+      "email": "mail@m.com",
+      "password": "Password.1"
     },
     {
-      "id": "46f0",
-      "email": "mat1@mail.dk",
-      "password": "Password.12"
-    },
-    {
-      "id": "d32b",
-      "email": "mail7@mail.com",
-      "password": "Password.12"
+      "id": "0a1c",
+      "email": "mathilde@mail.com",
+      "password": "Password.1"
     }
   ]
 }
