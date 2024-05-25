@@ -19,6 +19,7 @@ main {
     line-height: 1.5rem;
     font-size: var(--size-body);
     font-family: var(--font-body);
+    color: var(--color-black);
 }
  
 .aboutus img {
@@ -44,7 +45,7 @@ h2 {
         background-repeat: no-repeat;
     }
     .aboutus {
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: left;
@@ -56,6 +57,7 @@ h2 {
         line-height: 3rem;
         font-size: var(--size-body);
         font-family: var(--font-body);
+
     }
  
     .aboutus img {

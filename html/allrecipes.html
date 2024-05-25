@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/allrecipes.css">
+    <script src="/js/script.js" defer></script>
+    <!-- <script src="/js/API.js" defer></script> -->
+    <script src="/js/allrecipes.js" defer></script>
+    <script src="/js/frontpage.js" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <header class="banner">
+        <nav class="main-menu">
+            <img src="/icons/Comedo_red_logo.svg" alt="Logo" class="logo">
+        <button class="toggle-btn">menu</button>
+        <ul>
+            <li><a href="#0">All Recipes</a></li>
+            <li><a href="#0">About us</a></li>
+            <img src="/icons/heart-solid.svg" alt="heart" class="heart">
+            <img src="/icons/user-solid.svg" alt="user" class="user">
+        </ul>
+    </nav>
+    </header>
+    <main>
+ 
+        <!-- <section class="section_1">
+        <article>
+            <h1>Search for Recipes</h1>
+            <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
+            updates from the culinary world. Go ahead and search for your favorite dish to discover
+            our detailed, easy-to-follow recipes for you to try at home!</p>
+            <div class="search_container">
+                <input type="text" placeholder="Seach for meal">
+                <button class="search_box">
+                    <span class="search_box_icon">
+                        <img src="../search_icon.svg" alt="Search Icon">
+                    </span>
+                </button>
+            </div>
+            <p class="error_container"></p>  
+        </article>
+        <article>
+        <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge">
+        </article>
+ 
+    </section> -->
+ 
+    <section>
+        <h2 id="browse_by_category" class="hyphenate">Browse by category</h2>
+       
+        <div class="filter">
+            <label>Filter</label>
+            <select name="category" id="filter_btn">
+                <option selected disabled>Select</option>
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Goat">Goat</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Pork">Pork</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Starter">Starter</option>
+                <option value="Side">Side</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+        </div>
+ 
+        <div id="meal_container">
+            <!-- cloned meals go here -->
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="footer-container">
+            <div id="footer_comedo">
+                <img src="/img/Comedo_red_logo.svg" alt="ComedoLogo">
+                
+                <p>Stay informed with curated recipes, made to fit any form of dietary preferences. Stay informed on new ideas for dinner and any other meal. Join our vibrant  community and elevate your journey with Comedo.
+                    Newsletter. Subscribe now!</p>
+            </div>
+ 
+            <div id="footer_navlinks">
+                <h1>COMPANY</h1>
+                <a href="#">About us</a>
+                <a href="#">Contact us</a>
+                <a href="#">Terms & Conditions </a>
+ 
+            </div>
+ 
+            <div id="footer_some">
+                <h1>SOCIALS</h1>
+                <!-- Husk at fjerne "/" -->
+                <a href="#"><img src="/img/icons_instagram.svg" alt="ComedoInstagram"></a>
+                <a href="#"><img src="/img/icons_facebook.svg" alt="ComedoFacebook"></a>
+                <a href="#"><img src="/img/icons_linkedin.svg" alt="ComedoLinkedin"></a>
+                <a href="#"><img src="/img/icons_youtube.svg" alt="ComedoYoutube"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

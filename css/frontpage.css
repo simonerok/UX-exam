@@ -10,39 +10,58 @@ img {
 /* class to add if you want to make "orddeling ved linjeskift" */
 .hyphenate {
     overflow-wrap: break-word;
+    word-wrap: break-word;
     hyphens: auto;
-    width: 200px;
 }
  
+/* add margin to all sections (top and bottom)*/
+section{
+    margin-block: 2rem; ;
+}
  
 /* search bar */
 .search_container{
-    display: flex;
-    margin-top: 16px;
-    width: 100%;
+        display: flex;
+        margin-top: 16px;
+        width: 100%;
+}
+ 
+.visually_hidden{
+        display: none;
 }
  
 .search_box {
-  background-color: var(--color-secondary);
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
+    background-color: var(--color-secondary);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
 }
  
 .search_box_icon {
-    width: 25px;
-    height: 25px;
-    align-self: center;
+        width: 25px;
+        height: 25px;
+        align-self: center;
 }
  
-input[type="text"] {
-  width: 90%;
-  border: none;
-  box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
-  height: 40px;
-  align-self: center;
-  padding-inline: 12px;
+input[type="search"] {
+    width: 90%;
+    border: none;
+    box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
+    height: 40px;
+    align-self: center;
+    padding-inline: 12px;
+}
+ 
+/* meal of the day headline */
+#meal_of_th_day{
+    text-align: left;
+    margin-block: 1rem;
+}
+ 
+#browse_by_category{
+    text-align: left;
+    margin-block: 1rem;
 }
  
 /* hide splash image mobile */
@@ -126,10 +145,9 @@ webkit is to make it work with the browser  */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  height: calc(1.2em * 3);
+  height: auto; /* Adjust based on needs, could be larger than 90px */
 }
+ 
  
 .card_title{
     padding-block: 16px;
@@ -154,18 +172,12 @@ webkit is to make it work with the browser  */
  
  
 /*  UI CARD */
-.card_details_container {
-    min-height: 230px;
-    min-width: 230px;
-}
- 
  
 .card_container {
     display: grid;
     grid-auto-flow: column;
     width: 100%;
     margin: 0 auto;
-    overflow: hidden;
     padding-right: 2rem;
 }
  
@@ -200,19 +212,28 @@ webkit is to make it work with the browser  */
  
  
     .card_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
+     margin: 0 auto;
+     padding: 0px;
     }
+}
  
     #meal_container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-gap: 2rem;
     }
  
-}
+    #meal_of_the_day_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 2rem;
+    }
  
+ 
+ 
+ 
+ 
+/* DESKTOP */
  

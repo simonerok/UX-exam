@@ -1,108 +1,87 @@
-@media (min-width: 768px) {
-    .mad {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-        align-items: start;
-        margin: 0 10%; /* Center the content with some padding */
-        background-color: var(--color-secondary);
-        margin-bottom: 20px;
-    }
-     
-    .mad .Tid {
-        margin: 10px;
-        grid-column: span 1;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-     
-    .ingredienser ul, .metode p {
-        margin: 30px 0;
-        padding: 0;
-        list-style: none;
-        line-height: 2rem;
-        font-size: var(--size-body);
-        font-family: var(--font-body);
-        text-align: center;
-    }
-     
-    section.ingredienser, section.metode {
-        padding: 10px;
-        justify-content: center;
-    }
-     
-    h3 {
-        text-align: center;
-        margin: 5rem 0;
-        margin-bottom: 1rem;
-        font-size: var(--size-h3);
-        font-family: var(--font-h3);
-    }
-     
-    .description img {
-        margin: 2rem;
-        width: 40%;
-        margin-left: 10px;
-    }
-    }
-    /*Tablet and up*/
-    @media (min-width: 768px) {
-    .description {
-        margin: 20px;
-        display: flex;
-        align-items: center;
-    }
-     
-    .description p {
-        line-height: 2rem;
-        margin-bottom: 15rem;
-     
-    }
-     
-    .description img {
-        margin: 2rem;
-        width: 40%;
-        margin-left: 10px;
-    }
-     
-     
-    h3 {
-        text-align: center;
-        margin: 5rem 0;
-        margin-bottom: 1rem;
-        font-size: var(--size-h3);
-        font-family: var(--font-h3);
-    }
-     
-    .mad {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        align-items: start;
-        max-width: 1000px;
-        margin-left: 15%;
-        background-color: var(--color-secondary);
-        margin-bottom: 20px;
-    }
-     
-    .Tid {
-        margin:10px;
-        grid-column: span 2;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-     
-    .ingredienser ul, .metode p {
-        margin: 30px;
-        padding: 0;
-        list-style: none;
-        line-height: 3rem;
-        font-size: var(--size-body);
-        font-family: var(--font-body);
-    }
-     
-    section.ingredienser, section.metode {
-        padding: 10px;
-        justify-content: center;
-    }
-    }
+#recipe {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-wh);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ 
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+ 
+        .img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+ 
+        .category, .cuisine {
+            margin: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+ 
+        .description {
+            margin: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: var(--color-light);
+            border-radius: 10px;
+            box-shadow: var(--color-shadow);
+        }
+ 
+        .steps {
+            list-style: none;
+            counter-reset: step;
+            padding-left: 0px;
+        }
+        
+        .steps li {
+            margin-bottom: 20px;
+            padding-left: 0px;
+            text-align: justify;
+            font-style: var(--font-body);
+            font-weight: var(--size-body);
+            color: var(--colorprimary);
+        }
+        
+        .steps li::before {
+            content: counter(step) ".";
+            counter-increment: step;
+            display: inline-block;
+            width: 1.5em; /* Adjust as needed */
+            text-align: right;
+            margin-right: 0.5em; /* Adjust as needed */
+            font-weight: var(--size-body);
+            vertical-align: top;
+        }
+ 
+        .breadcrumbs {
+            margin: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-family: var(--font-body);
+            font-size: 14px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--color-black);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumbs span {
+            color: var(--color-red);
+        }
+        
+ 

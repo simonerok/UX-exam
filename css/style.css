@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+
+
+
+
 /* GENERAL */
 h1{
     font-family: var(--font-h1);
@@ -41,116 +45,129 @@ main{
     margin-inline: var(--margin-mobile);
 }
 
-/* html, body {
-    height: 100%; 
-    min-height: 100vh; 
-    margin: 0;
-    padding: 0;
-} */
+
+
+
+
 
 /* HEADER */
-.banner {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background: var(--color-secondary);
-  display: flex;
-  flex-direction: column;
+header{
+    background-color: var(--color-secondary);
+    padding-inline: 1.5rem;
+
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+header a{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+header ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    list-style: none;
+}
+
+.nav_icons{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.user_icon{
+    width: 25px;
+    height: 25px;
+}
+
+.heart_icon{
+    width: 25px;
+    height: 25px;
+}
+
+/* BURGERMENU */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Hidden by default */
 }
 
 .main-menu {
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-}
-
-.main-menu ul {
     list-style: none;
-    padding: 0;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
-ul li a {
+.main-menu a {
     color: var(--color-primary);
     text-decoration: none;
+    padding: 10px;
 }
 
-  /* burgermenu */
-    .toggle-btn {
-    background: transparent;
-    border: none;
-    min-width: 44px;
-    min-height: 44px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: none; 
+.nav_icons {
+    display: flex;
+    gap: 1rem;
 }
 
-.logo {
-  width: 100px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.heart {
-  width: 20px;
-  height: auto;
-}
-
-.user {
-  width: 15px;
-  height: auto;
-  margin-right: 10px;
-}
-
-/* var inde i media q */
-   .toggle-btn {
-      display: block; /* Vis knappen, nÃ¥r viewporten maksimalt er 600px */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; /* Show toggle button on small screens */
     }
 
     .main-menu {
-      display: contents; /* Fjern ".main-menu"-boksen fra ligningen, nÃ¥r viewporten maksimalt er 600px, men behold bÃ¸rnene, sÃ¥ disse deltager i flex-kontekten */
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        width: 100%;
     }
 
-    .main-menu ul {
-      display: none; /* Fjern menu-listen som standard */
+    .main-menu.shown {
+        max-height: 500px; /* Adjust based on your menu content */
     }
 
-    .main-menu.shown ul {
-      /* Vis menu-listen, nÃ¥r klassen ".shown" er til stede */
-        border-top: 1px solid #000;
-        padding-top: 1rem;
-        display: flex;
-        flex: 1 1 100%;
-        flex-flow: column;
-        width: 100px;
-        align-self: center;
+    .main-menu a {
+        padding: 20px;
     }
-
-    .heart , .user{
-        padding-top: 1.5rem;
-        margin-left: 1rem;
-    }
-
-    .logo {
-        position: fixed;
-        margin: 10px;
-        top: 10px;
-        left: 0.2px;
-        width: 80px;
-        height: auto;
-    }
-@media (max-width: 600px) {
- 
-
 }
-
-
-
-
-
-
-
 
 
 /* FOOTER */
@@ -345,9 +362,7 @@ footer h1, h2{
 
 
 
-
-
-/* CAROUSSEL */
+/* CAROUSEL STYLING */
 /* stylings for carousel*/
 #carousel{
     display: flex;
@@ -368,7 +383,11 @@ footer h1, h2{
  
 .carousel_card_container {
     display: grid;
-    width: 230px;
+  grid-auto-flow: row;
+  align-items: center;
+  width: 200px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
     transition: 1s;;
    
 }
@@ -380,27 +399,13 @@ footer h1, h2{
  
  
 .carousel_card_img {
-    width: 230px;
-    object-fit: cover;
-}
- 
-/* carousel card details */
-.carousel_card_details {
-    box-shadow: 0px 3px 15px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.2);
-    width: 90%;
-    padding: 12px;
-    margin: 0 auto;
-    height: 12rem;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    transition: 0.5s;
-}
- 
- 
-.carousel_card_details:hover{
+    width: 100%;
+   object-fit: cover;
    
-    box-shadow: 0px 3px 10px rgba(var(--color-black-r), var(--color-black-g), var(--color-black-b), 0.3);
+}
+ 
+.card_category_icon{
+    font-family: var(--font-h1);
 }
  
  
@@ -450,24 +455,6 @@ footer h1, h2{
  
     .carousel_card_container {
         display: grid;
-        width: 250px;
+        min-width: 250px;
     }
- 
-    .carousel_card_img {
-        width: 250px;
-        object-fit: cover;
-    }
- 
-    .controls{
-        position: static;
-    }
-    #prevButton{
-       
-        left:5rem;
-    }
-   
-    #nextButton{
-        right:5rem;
-    }
- 
 }

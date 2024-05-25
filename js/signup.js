@@ -54,13 +54,20 @@ form.addEventListener('submit', async function (e) {
      
         //if user doesnt exist, add user to database, else set error styles and throw error
         if (!userExists) {
- 
-            //calling async function for adding the user to the JSON 'database'
+           
+        //calling async function for adding the user to the JSON 'database'
         await addUserToDatabase(emailValue, passwordValue);
  
-        //TODO: code what to do after succesfull signup - redirect ro w/e  
+   
  
-        alert("Successfully created your account");
+             //To avoid the user accesing confirmation page by mistake,
+             // the fromSignup will be stored in sessionstorage to check that the user is redirected from signup
+             sessionStorage.setItem('fromSignup', 'true');
+ 
+             // Redirect to the confirmation page
+             window.location.href = "signupconfirmation.html";
+ 
+ 
         }else{
             setErrorStyles(emailInput, emailErrorMssg, emailErrorIcon, "There is already an account with this email", false);
             throw new Error("There is already an account with this email.");
@@ -106,5 +113,8 @@ passwordInput.addEventListener("input", function () {
 });
  
 passwordInputConfirm.addEventListener("input", function () {
+    validatePasswordMatch(passwordInput, passwordInputConfirm);
+});
+passwordInputConfirm.addEventListener("focus", function () {
     validatePasswordMatch(passwordInput, passwordInputConfirm);
 });
