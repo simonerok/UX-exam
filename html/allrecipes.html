@@ -5,49 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/allrecipes.css">
+    <link rel="stylesheet" href="/css/recipe.css">
+    <link rel="stylesheet" href="/css/frontpage.css">
     <script src="/js/script.js" defer></script>
     <!-- <script src="/js/API.js" defer></script> -->
     <script src="/js/allrecipes.js" defer></script>
-    <script src="/js/frontpage.js" defer></script>
-    <title>Home</title>
+   <!--  <script src="/js/frontpage.js" defer></script> -->
+    <title>All Recipes</title>
 </head>
 <body>
-    <header class="banner">
-        <nav class="main-menu">
-            <img src="/icons/Comedo_red_logo.svg" alt="Logo" class="logo">
-        <button class="toggle-btn">menu</button>
-        <ul>
-            <li><a href="#0">All Recipes</a></li>
-            <li><a href="#0">About us</a></li>
-            <img src="/icons/heart-solid.svg" alt="heart" class="heart">
-            <img src="/icons/user-solid.svg" alt="user" class="user">
-        </ul>
-    </nav>
+    <header>
+        <nav class="dropdown">
+            <button class="nav-toggle" id="nav-toggle">
+                ☰
+            </button>
+            <ul class="main-menu" id="main-menu">
+                <li><a href="/index.html"><img src="/img/Comedo_red_logo.svg" alt="Logo" class="logo"></a></li>
+                <li><a href="/html/allrecipes.html">All Recipes</a></li>
+                <div class="nav_icons">
+                    <li><a href="/html/favourites.html"><img src="/icons/heart-solid.svg" alt="Heart Icon" class="heart_icon"></a></li>
+                    <li><a href="/html/login.html"><img src="/icons/user-solid.svg" alt="User Icon" class="user_icon"></a></li>
+                </div>
+            </ul>
+        </nav>
     </header>
+
     <main>
- 
-        <!-- <section class="section_1">
-        <article>
-            <h1>Search for Recipes</h1>
-            <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
-            updates from the culinary world. Go ahead and search for your favorite dish to discover
-            our detailed, easy-to-follow recipes for you to try at home!</p>
-            <div class="search_container">
-                <input type="text" placeholder="Seach for meal">
-                <button class="search_box">
-                    <span class="search_box_icon">
-                        <img src="../search_icon.svg" alt="Search Icon">
-                    </span>
-                </button>
+    <h1>All Recipes</h1>    
+    
+    <div id="all_recipes_container"></div>
+    
+    <template id="section_1_card">
+        <div class="card_container">
+            <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <div class="card_details_container">
+                <div class="card_name_and_icon">
+                    <div class="fav_category_container">
+                        <button class="btn_fav">
+                            <div class="search_box_icon">
+                                <img src="../heart-no-fill.svg" alt="heart Icon">
+                            </div>
+                        </button>
+                        <div class="category_fav_flex">
+                            <div class="card_category_icon"><span></span></div>
+                            <p class="card_category"></p>
+                        </div>
+                    </div>
+                    <h3 class="card_title hyphenate"></h3>
+                </div>
+                <p class="card_description hyphenate"></p>
             </div>
-            <p class="error_container"></p>  
-        </article>
-        <article>
-        <img class="splash_img" src="/placeholder_food.jpg" alt="food iamge">
-        </article>
- 
-    </section> -->
+        </div>  
+    </template>
+
+    <button class="button more_btn">Load more meals</button>
  
     <section>
         <h2 id="browse_by_category" class="hyphenate">Browse by category</h2>
@@ -55,8 +66,7 @@
         <div class="filter">
             <label>Filter</label>
             <select name="category" id="filter_btn">
-                <option selected disabled>Select</option>
-                <option value="Beef">Beef</option>
+                <option value="Beef" selected>Beef</option>
                 <option value="Chicken">Chicken</option>
                 <option value="Goat">Goat</option>
                 <option value="Lamb">Lamb</option>
@@ -76,8 +86,10 @@
         <div id="meal_container">
             <!-- cloned meals go here -->
         </div>
+        <button class="button more_btn" id="more_btn_category">Load more meals</button>
     </section>
  
+    </main>
     <footer>
         <div class="footer-container">
             <div id="footer_comedo">

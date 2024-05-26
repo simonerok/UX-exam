@@ -30,7 +30,7 @@ const ingredientSelect = document.getElementById('ingredient-select');
 const ingredients = ['Eggs', 'Oats', 'Berries', 'Bananas', 'Milk'];
 
 // Populate the ingredient select dropdown
-function populateSelect(selectElement, options) {
+/* function populateSelect(selectElement, options) {
     selectElement.innerHTML = '<option value="">Select</option>';
     options.forEach(option => {
         const optionElement = document.createElement('option');
@@ -38,13 +38,13 @@ function populateSelect(selectElement, options) {
         optionElement.textContent = option;
         selectElement.appendChild(optionElement);
     });
-}
+} */
 
 // Populate the ingredient select dropdown with options
-populateSelect(ingredientSelect, ingredients);
+/* populateSelect(ingredientSelect, ingredients); */
 
 // Fetch and display breakfast recipes
-async function fetchRecipes(ingredient = '') {
+/* async function fetchRecipes(ingredient = '') {
     recipesSection.innerHTML = '';  // Clear previous results
     try {
         const url = API_BASE_URL + 'filter.php?c=Breakfast';
@@ -60,10 +60,10 @@ async function fetchRecipes(ingredient = '') {
     } catch (error) {
         console.error('Error fetching recipes:', error);
     }
-}
+} */
 
 // Fetch and filter recipes by ingredient
-async function filterByIngredient(recipes, ingredient) {
+/* async function filterByIngredient(recipes, ingredient) {
     const filteredRecipes = [];
     for (const recipe of recipes) {
         const response = await fetch(API_BASE_URL + 'lookup.php?i=' + recipe.idMeal);
@@ -75,10 +75,10 @@ async function filterByIngredient(recipes, ingredient) {
         }
     }
     return filteredRecipes;
-}
+} */
 
 // Get ingredients list from a recipe
-function getIngredientsList(meal) {
+/* function getIngredientsList(meal) {
     const ingredientsList = [];
     for (let i = 1; i <= 20; i++) {
         const ingredient = meal[`strIngredient${i}`];
@@ -87,10 +87,10 @@ function getIngredientsList(meal) {
         }
     }
     return ingredientsList;
-}
+} */
 
 // Display recipes in the recipes section
-function displayRecipes(recipes) {
+/* function displayRecipes(recipes) {
     if (recipes && recipes.length > 0) {
         recipes.forEach(recipe => {
             const recipeCard = document.createElement('div');
@@ -106,19 +106,19 @@ function displayRecipes(recipes) {
     } else {
         recipesSection.innerHTML = '<p>No recipes found.</p>';
     }
-}
+} */
 
 // Event listener for ingredient select change
-ingredientSelect.addEventListener('change', (event) => {
+/* ingredientSelect.addEventListener('change', (event) => {
     const selectedIngredient = event.target.value;
     fetchRecipes(selectedIngredient);
-});
+}); */
 
 // Initial fetch of breakfast recipes
-fetchRecipes();
+/* fetchRecipes(); */
 
 // Add event listeners to heart icons
-function addFavouriteListeners() {
+/* function addFavouriteListeners() {
     const hearts = document.querySelectorAll('.fa-heart');
     hearts.forEach(heart => {
         heart.addEventListener('click', () => {
@@ -126,10 +126,10 @@ function addFavouriteListeners() {
             toggleFavourite(recipeId, heart);
         });
     });
-}
+} */
 
 // Toggle favorite status and store in sessionStorage
-function toggleFavourite(recipeId, heart) {
+/* function toggleFavourite(recipeId, heart) {
     let favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
     if (favourites.includes(recipeId)) {
         favourites = favourites.filter(id => id !== recipeId);
@@ -141,10 +141,10 @@ function toggleFavourite(recipeId, heart) {
         heart.classList.add('fas');
     }
     sessionStorage.setItem('favourites', JSON.stringify(favourites));
-}
+} */
 
 // Initialize favorites from sessionStorage
-function initializeFavourites() {
+/* function initializeFavourites() {
     const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
     favourites.forEach(recipeId => {
         const heart = document.querySelector(`.fa-heart[data-id="${recipeId}"]`);
@@ -153,7 +153,7 @@ function initializeFavourites() {
             heart.classList.add('fas');
         }
     });
-}
+} */
 
 // Run this to ensure the hearts reflect the correct state
-initializeFavourites();
+/* initializeFavourites(); */

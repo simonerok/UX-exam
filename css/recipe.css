@@ -84,4 +84,38 @@
             color: var(--color-red);
         }
         
- 
+
+ /*ALL RECIPES UI CARDS */
+ #all_recipes_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 2rem;
+    }
+
+/*  BUTTONS */
+.button{
+    background: none;
+    border: none;
+    padding: none;
+    margin: none;
+    cursor: pointer;
+}
+
+.more_btn {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+    margin-top: 2rem;
+}
+
+.more_btn:hover {
+    background-color: var(--color-primary); 
+    color: var(--color-secondary);
+}

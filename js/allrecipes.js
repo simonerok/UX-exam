@@ -1,108 +1,148 @@
 'use strict';
-
+ 
 const BASE_URL2 = "https://www.themealdb.com/api/json/v1/1/";
  
+
 async function fetchData(url) {
     try {
         const response = await fetch(BASE_URL2 + url);
         const data = await response.json();
-        return data;
+        return data.meals;
     } catch (error) {
         console.error('Error:', error);
     }
 }
- 
-async function fetchCategories() {
-    const data = await fetchData('categories.php');
-    const categories = data.categories;
-    if (categories) {
-        populateCategories(categories);
+ async function fetchRandomMeal() {
+    const meals = await fetchData('random.php');
+    return meals[0];  // Return the first meal found in the array
+}
+/****************************************  GET ALL RECIPES ************************************************/
+async function fetchAllRecipes(start, numMeals) {
+    const allRecipesContainer = document.querySelector('#all_recipes_container');
+    
+    
+    for (let i = start; i < start + numMeals; i++) {
+        // Fetch a random meal
+        const meal = await fetchRandomMeal();
+        console.log(meal); // Log the meal to the console
+
+        // Clone the card template
+        const cardTemplate = document.querySelector('#section_1_card').content;
+        const card = cardTemplate.cloneNode(true);
+
+        // Get the elements in the card
+        const img = card.querySelector('.card_img');
+        const title = card.querySelector('.card_title');
+        const description = card.querySelector('.card_description');
+        const favIcon = card.querySelector('.btn_fav img');
+        const categoryIcon = card.querySelector('.card_category_icon span');
+        const category = card.querySelector('.card_category');
+
+        // Set the properties of the elements
+        img.src = meal.strMealThumb;
+        img.alt = meal.strMeal;
+        title.textContent = meal.strMeal;
+        description.textContent = meal.strInstructions;
+        favIcon.src = '../heart-no-fill.svg';
+        favIcon.alt = 'favorite Icon';
+        categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
+        category.textContent = meal.strCategory;
+
+        // Append the card to the all recipes container
+        allRecipesContainer.appendChild(card);
+        console.log("fetching all recipes")
     }
 }
- 
-function populateCategories(categories) {
-    const container = document.getElementById('categories-container');
-    categories.forEach(category => {
-        const categoryCard = document.createElement('div');
-        categoryCard.className = 'category-card';
- 
-        const categoryImg = document.createElement('img');
-        categoryImg.src = category.strCategoryThumb;
-        categoryImg.alt = category.strCategory;
- 
-        const categoryTitle = document.createElement('h3');
-        categoryTitle.textContent = category.strCategory;
- 
-        categoryCard.appendChild(categoryImg);
-        categoryCard.appendChild(categoryTitle);
-        container.appendChild(categoryCard);
- 
-        // Add click event listener to redirect to recipe.html
-        categoryCard.addEventListener('click', () => {
-            window.location.href = `meals.html?category=${category.strCategory}`;
-        });
-    });
-}
- 
-// Fetch and display categories when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', fetchCategories);
- 
+
+/********************* LOAD MORE MEALS BUTTON ALL RECIPES ****************/
+let numMealsLoaded = 6; // Start with 6 meals
+
+// Fetch and display the initial meals
+fetchAllRecipes(0, numMealsLoaded);
+
+// Get the load more button
+const loadMoreBtn = document.querySelector('.more_btn');
+
+// Add an event listener to the button
+loadMoreBtn.addEventListener('click', function() {
+    fetchAllRecipes(numMealsLoaded, 2); // Fetch and display 2 new meals
+    numMealsLoaded += 2; // Increase the number of meals by 2 each time u click the button
+});
+
  
 /****************************************  FILTER FUNCTIONALITY (filter by category) ************************************************/
  
-const select = document.querySelector('#filter_btn');
-const template = document.querySelector('#template_card');
-const container = document.querySelector('#meal_container');
- 
-/* fetch data based on the selected "category" in the filter button */
-select.addEventListener('change', async function() {
-    const category = select.value;
- 
-    // Fetch data from the API by category
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-    const data = await response.json();
- 
-    // Clear the html to be able to place new data
-    container.innerHTML = '';
- 
-    // Create a new card for each meal
-    const mealPromises = data.meals.map(async meal => {
-        // Fetch additional data for the meal
-        const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
-        const mealData = await mealResponse.json();
-        const detailedMeal = mealData.meals[0];
- 
-        // Clone the template
-        const clone = template.content.cloneNode(true);
- 
-        // Populate the clone with data
-        clone.querySelector('.card_img').src = detailedMeal.strMealThumb;
-        clone.querySelector('.card_title').textContent = detailedMeal.strMeal;
-        clone.querySelector('.card_category').textContent = category;
-        clone.querySelector('.card_category_icon span').textContent = category.charAt(0);
- 
-        // Select cardArea and youtubeLink within the clone
-        const cardArea = clone.querySelector('.card_area');
-        const youtubeLink = clone.querySelector('.card_youtube');
- 
-        if (cardArea) {
-            cardArea.textContent = "Cuisine: " + detailedMeal.strArea;
+
+    const select = document.querySelector('#filter_btn');
+    const template = document.querySelector('#section_1_card');
+    const container = document.querySelector('#meal_container');
+    const moreBtn = document.querySelector('#more_btn_category');
+
+    let mealsLoaded = 0; // Start with 0 meals
+
+    // Set the default selected option to "Beef"
+    select.value = 'Beef';
+
+    // Function to fetch and display meals
+    async function fetchMealsByCategory(category, start, count) {
+        console.log(`Fetching ${count} meals of category ${category} starting from ${start}`);
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+        const data = await response.json();
+        /* clear the container if the start is 0 to be able to put fetched data in there */
+        if (start === 0) {
+            container.innerHTML = '';
         }
- 
-        if (youtubeLink) {
-            if (detailedMeal.strYoutube) {
-                youtubeLink.href = detailedMeal.strYoutube;
-                youtubeLink.textContent = 'Watch on YouTube';
-            } else {
-                youtubeLink.textContent = 'No YouTube guide available';
+        /* turns a copy of meals array into a new array object  */
+        const meals = data.meals.slice(start, start + count);
+
+        const mealPromises = meals.map(async meal => {
+            const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
+            const mealData = await mealResponse.json();
+            const detailedMeal = mealData.meals[0];
+
+            const clone = template.content.cloneNode(true);
+
+            clone.querySelector('.card_img').src = detailedMeal.strMealThumb;
+            clone.querySelector('.card_title').textContent = detailedMeal.strMeal;
+            clone.querySelector('.card_category').textContent = category;
+            clone.querySelector('.card_category_icon span').textContent = category.charAt(0);
+
+            const cardArea = clone.querySelector('.card_cuisine');
+            const youtubeLink = clone.querySelector('.card_youtube');
+
+            if (cardArea) {
+                cardArea.textContent = "Cuisine: " + detailedMeal.strArea;
             }
-        }
- 
-        // Append the clone to the container
-        container.appendChild(clone);
-    });
- 
-    // Wait for all meals to be fetched and cards to be created to get all the information
-    await Promise.all(mealPromises);
+
+            if (youtubeLink) {
+                if (detailedMeal.strYoutube) {
+                    youtubeLink.href = detailedMeal.strYoutube;
+                    youtubeLink.textContent = 'Watch on YouTube';
+                } else {
+                    youtubeLink.textContent = 'No YouTube guide available';
+                }
+            }
+
+            container.appendChild(clone);
+        });
+
+        await Promise.all(mealPromises);
+        mealsLoaded += count;
+    }
+
+    // Fetch and display the initial meals
+    fetchMealsByCategory('Beef', 0, 6);
+
+    // Add an event listener to the load more button
+    moreBtn.addEventListener('click', function() {
+    console.log("Load more button clicked");
+    fetchMealsByCategory(select.value, mealsLoaded, 2);
 });
+
+    select.addEventListener('change', function() {
+        numMealsLoaded = 0; // Reset the number of meals loaded
+        fetchMealsByCategory(select.value, 0, 6); // Fetch and display the initial meals
+    });
+
  
+
