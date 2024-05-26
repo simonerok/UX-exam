@@ -57,7 +57,9 @@ Promise.all(promises)
             youtubeLink.href = meal.strYoutube;
             youtubeLink.textContent = 'Watch on YouTube';
             categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
- 
+
+       
+
             mealContainer.appendChild(cardClone);
         });
     })
@@ -122,6 +124,16 @@ searchButton.addEventListener('click', async function(e) {
     categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
     category.textContent = meal.strCategory;
  
+    // Get the card container in the cloned template
+const mealCard = card.querySelector('.card_container');
+
+    // If mealCard exists, add an event listener and send the id with
+    if (mealCard) {
+        mealCard.addEventListener('click', function() {
+            console.log("clicked", meal.idMeal);
+            window.location.href = `recipe.html?id=${meal.idMeal}`;
+        });
+    }
     // Append the card to the section
     section.appendChild(card);
   });
@@ -157,6 +169,18 @@ async function mealOfTheDay() {
   categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
   category.textContent = meal.strCategory;
  
+
+// Get the card container in the cloned template
+const cardContainer = card.querySelector('.card_container');
+
+// If cardContainer exists, add an event listener and send the id with
+if (cardContainer) {
+    cardContainer.addEventListener('click', function() {
+        console.log("clicked", meal.idMeal);
+        window.location.href = `recipe.html?id=${meal.idMeal}`;
+    });
+}
+
   // Append the card to the meal of the day container
   const mealOfTheDayContainer = document.querySelector('#meal_of_the_day_container');
   console.log(mealOfTheDayContainer); // Log the container to the console
@@ -266,6 +290,17 @@ function updateCards() {
     cardArea.textContent = `Cuisine: ${carouselMeals[dataIndex].strArea}`;
     cardCategoryIcon.textContent = carouselMeals[dataIndex].strCategory.charAt(0);
  
+    // Get the card container in the cloned template
+const mealCard = cardClone.querySelector('.carousel_card_container');
+
+// If mealCard exists, add an event listener and send the id with
+if (mealCard) {
+    mealCard.addEventListener('click', function() {
+        console.log("clicked", carouselMeals[dataIndex].idMeal);
+        window.location.href = `recipe.html?id=${carouselMeals[dataIndex].idMeal}`;
+    });
+}
+
     destination.appendChild(cardClone);
   }
  
