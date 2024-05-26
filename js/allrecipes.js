@@ -20,7 +20,6 @@ async function fetchData(url) {
 async function fetchAllRecipes(start, numMeals) {
     const allRecipesContainer = document.querySelector('#all_recipes_container');
     
-    
     for (let i = start; i < start + numMeals; i++) {
         // Fetch a random meal
         const meal = await fetchRandomMeal();
@@ -48,12 +47,21 @@ async function fetchAllRecipes(start, numMeals) {
         categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
         category.textContent = meal.strCategory;
 
+        // Get the card container in the cloned template
+        const cardContainer = card.querySelector('.card_container');
+
+        // Add an event listener and send the id with
+        cardContainer.addEventListener('click', function() {
+            console.log("clicked", meal.idMeal);
+            window.location.href = `recipe.html?id=${meal.idMeal}`;
+            loadMealById(meal.idMeal);
+        });
+
         // Append the card to the all recipes container
         allRecipesContainer.appendChild(card);
         console.log("fetching all recipes")
     }
 }
-
 /********************* LOAD MORE MEALS BUTTON ALL RECIPES ****************/
 let numMealsLoaded = 6; // Start with 6 meals
 
@@ -99,14 +107,12 @@ loadMoreBtn.addEventListener('click', function() {
             const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
             const mealData = await mealResponse.json();
             const detailedMeal = mealData.meals[0];
-
             const clone = template.content.cloneNode(true);
 
             clone.querySelector('.card_img').src = detailedMeal.strMealThumb;
             clone.querySelector('.card_title').textContent = detailedMeal.strMeal;
             clone.querySelector('.card_category').textContent = category;
             clone.querySelector('.card_category_icon span').textContent = category.charAt(0);
-
             const cardArea = clone.querySelector('.card_cuisine');
             const youtubeLink = clone.querySelector('.card_youtube');
 
@@ -120,13 +126,22 @@ loadMoreBtn.addEventListener('click', function() {
                     youtubeLink.textContent = 'Watch on YouTube';
                 } else {
                     youtubeLink.textContent = 'No YouTube guide available';
+                    youtubeLink.style.color = 'red';
+                    youtubeLink.style.fontStyle = 'italic';
                 }
             }
 
-            container.appendChild(clone);
-        });
+const mealCard = clone.querySelector('.card_container');
+        mealCard.addEventListener('click', function() {
+        console.log("clicked", meal.idMeal);
+        window.location.href = `recipe.html?id=${meal.idMeal}`;
+    });
 
-        await Promise.all(mealPromises);
+        return clone;   
+    });
+
+        const clones = await Promise.all(mealPromises);
+        clones.forEach(clone => container.appendChild(clone));
         mealsLoaded += count;
     }
 
@@ -144,5 +159,4 @@ loadMoreBtn.addEventListener('click', function() {
         fetchMealsByCategory(select.value, 0, 6); // Fetch and display the initial meals
     });
 
- 
 

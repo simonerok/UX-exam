@@ -157,3 +157,5 @@ const ingredients = ['Eggs', 'Oats', 'Berries', 'Bananas', 'Milk'];
 
 // Run this to ensure the hearts reflect the correct state
 /* initializeFavourites(); */
+
+

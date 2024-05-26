@@ -92,6 +92,11 @@
         grid-gap: 2rem;
     }
 
+.filter_container {
+    margin-bottom: 2rem;
+    border-radius: 0%;
+}
+
 /*  BUTTONS */
 .button{
     background: none;
@@ -118,4 +123,25 @@
 .more_btn:hover {
     background-color: var(--color-primary); 
     color: var(--color-secondary);
+}
+
+#filter_btn{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer; 
+}
+
+@media (min-width: 768px){
+    /* filter container */
+.filter_container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-content: center;
+}
 }

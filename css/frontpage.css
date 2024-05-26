@@ -177,6 +177,7 @@ webkit is to make it work with the browser  */
     width: 100%;
     margin: 0 auto;
     padding-right: 2rem;
+    cursor: pointer;
 }
  
 .card_img {

@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/recipe.css">
     <link rel="stylesheet" href="/css/frontpage.css">
-    <script src="/js/script.js" defer></script>
-    <!-- <script src="/js/API.js" defer></script> -->
+    
+    
     <script src="/js/allrecipes.js" defer></script>
-   <!--  <script src="/js/frontpage.js" defer></script> -->
+   
     <title>All Recipes</title>
 </head>
 <body>
@@ -54,6 +54,8 @@
                     <h3 class="card_title hyphenate"></h3>
                 </div>
                 <p class="card_description hyphenate"></p>
+                <div class="card_cuisine"></div>
+        <a class="card_youtube"></a>
             </div>
         </div>  
     </template>
@@ -61,26 +63,26 @@
     <button class="button more_btn">Load more meals</button>
  
     <section>
-        <h2 id="browse_by_category" class="hyphenate">Browse by category</h2>
-       
-        <div class="filter">
-            <label>Filter</label>
-            <select name="category" id="filter_btn">
-                <option value="Beef" selected>Beef</option>
-                <option value="Chicken">Chicken</option>
-                <option value="Goat">Goat</option>
-                <option value="Lamb">Lamb</option>
-                <option value="Pork">Pork</option>
-                <option value="Seafood">Seafood</option>
-                <option value="Vegan">Vegan</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Starter">Starter</option>
-                <option value="Side">Side</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Miscellaneous">Miscellaneous</option>
-            </select>
+        <div class="filter_container">
+            <h2 id="browse_by_category" class="hyphenate">Browse by category</h2>
+            <div class="filter">
+                <select name="category" id="filter_btn">
+                    <option value="Beef" selected>Beef</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Goat">Goat</option>
+                    <option value="Lamb">Lamb</option>
+                    <option value="Pork">Pork</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Starter">Starter</option>
+                    <option value="Side">Side</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+            </div>
         </div>
  
         <div id="meal_container">
