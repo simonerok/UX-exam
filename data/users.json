@@ -54,6 +54,11 @@
       "id": "3c0a",
       "email": "test3@live.dk",
       "password": "Password#1"
+    },
+    {
+      "id": "6740",
+      "email": "test4@live.dk",
+      "password": "Password#1"
     }
   ]
 }
