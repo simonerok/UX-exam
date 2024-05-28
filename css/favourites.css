@@ -5,13 +5,14 @@
 }
 
 .recipe-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-shadow);
     border-radius: 5px;
     overflow: hidden;
     width: 200px;
     position: relative;
     padding-bottom: 10px; /* Added to make space for the heart icon */
     margin: 1em; /* Add some margin for spacing */
+    padding: 0.5rem;
 }
 
 .recipe-card img {
@@ -29,9 +30,16 @@
     right: 10px;
     font-size: 24px;
     cursor: pointer;
-    color: grey; /* Default color */
+    color: var(--color-primary); /* Default color */
 }
 
 .recipe-card .fa-heart.fas {
-    color: red; /* Color when favorited */
+    color: var(--color-red); /* Color when favorited */
 }
+
+#favourites{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+

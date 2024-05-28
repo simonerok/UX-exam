@@ -9,10 +9,28 @@
     <link rel="stylesheet" href="../css/login_signup.css">
     <title>Signup</title>
     <script type="module" src="../js/signup.js" defer></script>
-    <script src="/js/script.js" defer></script>
+    <script src="../js/script.js" defer></script>
 </head>
  
 <body>
+    <header>
+        <nav>
+            <div class="flex_mobile">
+                <a href="index.html"><img src="../img/Comedo_red_logo.svg" alt="Logo" class="logo"></a>
+                <button class="nav-toggle" id="nav-toggle">☰</button>
+            </div>
+            <div class="dropdown">
+                <ul class="main-menu" id="main-menu">
+                    <li><a href="../html/allrecipes.html" class="menu_links">All Recipes</a></li>
+                    <div class="nav_icons">
+                        <li><a href="../html/favourites.html" class="menu_links"><img src="../icons/heart-solid.svg" alt="Heart Icon" class="heart_icon"></a></li>
+                        <li class="login_li"><a href="../html/login.html" id="login_link" class="menu_links"><img src="../icons/user-solid.svg" alt="User Icon" class="user_icon"></a></li>
+                        <li class="hidden logout_li"><button id="logout" class="logout_flex" aria-label="logout"><img src="../icons/logout.svg" alt="logout_icon" class="logout_icon"><span>Logout</span></button></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <main>
         <section id="signup_section" class="">
             <h1>Create your account</h1>
@@ -56,9 +74,9 @@
             <h3 class="text_link">Already have an account? <span><a id="login_link" aria-label="login link"
                         href="login.html">Login here!</a></span></h3>
         </section>
- 
- 
     </main>
+
+    
 </body>
  
 </html>

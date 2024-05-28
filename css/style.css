@@ -14,10 +14,21 @@
 
 
 /* GENERAL */
+ul{
+    font-family: var(--font-body);
+}
+ 
+/*Fiks hjerterne*/
+.fa-heart{
+font-size: 1.6rem;
+  color: var(--color-red);
+}
+
 h1{
     font-family: var(--font-h1);
     font-size: var(--size-h1);
     margin-bottom: 33px;
+    text-align: center;
 }
 
 /* this ensures only the first H1 on the page gets margin top */
@@ -28,11 +39,14 @@ body h1:first-of-type {
 h2{
     font-family: var(--font-h2);
     font-size: var(--size-h2);
+    text-align: center;
+
 }
 
 h3{
     font-family: var(--font-h3);
     font-size: var(--size-h3);
+    
 }
 
 p{

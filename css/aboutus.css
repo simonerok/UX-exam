@@ -1,5 +1,5 @@
 main {
-    background-image: url('/img/avocado.png');
+    background-image: url('../img/avocado.png');
     background-position: 50% 50%;
     background-size: 500px 500px;
     height: 100vh;
@@ -38,7 +38,7 @@ h2 {
 /* Styles for larger screens (tablets and up) */
 @media (min-width: 768px) {
     main {
-        background-image: url('/img/avocado.png');
+        background-image: url('../img/avocado.png');
         background-position: 50% 50%;
         background-size: 1000px 1000px;
         height: 100vh;

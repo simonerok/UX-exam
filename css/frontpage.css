@@ -55,7 +55,6 @@ input[type="search"] {
  
 /* meal of the day headline */
 #meal_of_th_day{
-    text-align: left;
     margin-block: 1rem;
 }
  
@@ -145,7 +144,7 @@ webkit is to make it work with the browser  */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  height: auto; /* Adjust based on needs, could be larger than 90px */
+  height: auto; 
 }
  
  

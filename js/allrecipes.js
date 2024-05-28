@@ -33,7 +33,6 @@ async function fetchAllRecipes(start, numMeals) {
         const img = card.querySelector('.card_img');
         const title = card.querySelector('.card_title');
         const description = card.querySelector('.card_description');
-        const favIcon = card.querySelector('.btn_fav img');
         const categoryIcon = card.querySelector('.card_category_icon span');
         const category = card.querySelector('.card_category');
  
@@ -42,8 +41,6 @@ async function fetchAllRecipes(start, numMeals) {
         img.alt = meal.strMeal;
         title.textContent = meal.strMeal;
         description.textContent = meal.strInstructions;
-        favIcon.src = '../heart-no-fill.svg';
-        favIcon.alt = 'favorite Icon';
         categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
         category.textContent = meal.strCategory;
  
