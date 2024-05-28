@@ -2,7 +2,8 @@
 
 // Add the missing functions
 function getUserFavorites() {
-    const favorites = localStorage.getItem('favorites');
+    const userData = sessionStorage.getItem("userLogged");
+    const favorites = localStorage.getItem(userData+'_favorites');
     return favorites ? JSON.parse(favorites) : [];
 }
 
@@ -17,7 +18,8 @@ function toggleUserFavorite(recipeId, heartIcon) {
         heartIcon.classList.remove('far');
         heartIcon.classList.add('fas');
     }
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    const userData = sessionStorage.getItem("userLogged");
+    localStorage.setItem(userData+'_favorites', JSON.stringify(favorites));
 }
 
 // Existing functions

@@ -144,7 +144,6 @@ searchButton.addEventListener('click', async function (e) {
         // If img exists, add an event listener and send the id with
         if (card_img) {
             card_img.addEventListener('click', function() {
-                console.log("clicked", meal.idMeal);
                 window.location.href = `recipe.html?id=${meal.idMeal}`;
             });
         }
@@ -206,7 +205,6 @@ async function mealOfTheDay() {
     // If img exists, add an event listener and send the id with
     if (card_img) {
         card_img.addEventListener('click', function() {
-            console.log("clicked", meal.idMeal);
             window.location.href = `recipe.html?id=${meal.idMeal}`;
         });
     }
@@ -290,7 +288,6 @@ function updateCards() {
         // If cardImg exists, add an event listener and send the id with
         if (image_carousel_card) {
             image_carousel_card.addEventListener('click', function() {
-                console.log("clicked", carouselMeals[dataIndex].idMeal);
                 window.location.href = `recipe.html?id=${carouselMeals[dataIndex].idMeal}`;
             });
         }

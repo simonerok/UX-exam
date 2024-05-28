@@ -5,7 +5,8 @@ const favouritesSection = document.getElementById('favourites');
 
 // Fetch favorite recipes from localStorage and display them
 async function fetchFavouriteRecipes() {
-    const favourites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const userData = sessionStorage.getItem("userLogged");
+    const favourites = JSON.parse(localStorage.getItem(userData+'_favorites')) || [];
     if (favourites.length === 0) {
         favouritesSection.innerHTML = '<p>No favourite recipes found.</p>';
         return;
@@ -16,7 +17,6 @@ async function fetchFavouriteRecipes() {
         const response = await fetch(API_BASE_URL + 'lookup.php?i=' + recipeId);
         const data = await response.json();
         favouriteRecipes.push(data.meals[0]);
-        console.log(favouriteRecipes)
     }
     displayRecipes(favouriteRecipes);
 }
@@ -24,7 +24,6 @@ async function fetchFavouriteRecipes() {
 // Display recipes in the favourites section
 function displayRecipes(recipes) {
     favouritesSection.innerHTML = ''; // Clear previous results
-    console.log("hej");
     if (recipes && recipes.length > 0) {
         recipes.forEach(recipe => {
             const recipeCard = document.createElement('div');
@@ -65,7 +64,8 @@ function addFavouriteListeners() {
 
 // Toggle favorite status and store in localStorage
 function toggleFavourite(recipeId, heart) {
-    let favourites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const userData1 = sessionStorage.getItem("userLogged");
+    let favourites = JSON.parse(localStorage.getItem(userData1+'_favorites')) || [];
     if (favourites.includes(recipeId)) {
         favourites = favourites.filter(id => id !== recipeId);
         heart.classList.remove('fas');
@@ -75,7 +75,8 @@ function toggleFavourite(recipeId, heart) {
         heart.classList.remove('far');
         heart.classList.add('fas');
     }
-    localStorage.setItem('favorites', JSON.stringify(favourites));
+    const userData = sessionStorage.getItem("userLogged");
+    localStorage.setItem(userData+'_favorites', JSON.stringify(favourites));
 }
 
 // Initial fetch of favourite recipes
