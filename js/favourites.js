@@ -22,6 +22,7 @@ async function fetchFavouriteRecipes() {
 
 // Display recipes in the favourites section
 function displayRecipes(recipes) {
+    favouritesSection.innerHTML = ''; // Clear previous results
     if (recipes && recipes.length > 0) {
         recipes.forEach(recipe => {
             const recipeCard = document.createElement('div');
@@ -29,7 +30,10 @@ function displayRecipes(recipes) {
             recipeCard.innerHTML = `
                 <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
                 <h3>${recipe.strMeal}</h3>
-                <i class="fas fa-heart" data-id="${recipe.idMeal}"></i> <!-- Ensure this class is 'fas' to show as filled heart -->
+                <p>${recipe.strInstructions.substring(0, 100)}...</p>
+                <button class="btn_fav">
+                    <i class="fas fa-heart" data-id="${recipe.idMeal}"></i>
+                </button>
             `;
             favouritesSection.appendChild(recipeCard);
         });
@@ -41,14 +45,14 @@ function displayRecipes(recipes) {
 
 // Add event listeners to heart icons in the favourites section
 function addFavouriteListeners() {
-    const hearts = document.querySelectorAll('.fa-heart');
+    const hearts = document.querySelectorAll('.btn_fav i');
     hearts.forEach(heart => {
         heart.addEventListener('click', () => {
             const recipeId = heart.getAttribute('data-id');
             toggleFavourite(recipeId, heart);
             // Remove the recipe card if it's unfavorited
             if (!heart.classList.contains('fas')) {
-                heart.parentElement.remove();
+                heart.parentElement.parentElement.remove();
                 if (favouritesSection.childElementCount === 0) {
                     favouritesSection.innerHTML = '<p>No favourite recipes found.</p>';
                 }

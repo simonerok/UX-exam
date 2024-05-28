@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/frontpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="/js/frontpage.js" defer></script>
     <script src="/js/script.js" defer></script>
+    <script src="/js/favourites.js" defer></script>
     <title>Home</title>
 </head>
 <body>
@@ -20,124 +22,64 @@
                 <li><a href="/index.html"><img src="/img/Comedo_red_logo.svg" alt="Logo" class="logo"></a></li>
                 <li><a href="/html/allrecipes.html">All Recipes</a></li>
                 <div class="nav_icons">
-                    <li><a href="/html/favourites.html"><img src="/icons/heart-solid.svg" alt="Heart Icon" class="heart_icon"></a></li>
-                    <li><a href="/html/login.html"><img src="/icons/user-solid.svg" alt="User Icon" class="user_icon"></a></li>
+                    <li><a href="/html/favourites.html"><i class="fas fa-heart heart_icon"></i></a></li>
+                    <li><a href="/html/login.html"><i class="fas fa-user user_icon"></i></a></li>
                 </div>
             </ul>
         </nav>
     </header>
     <main>
-       
         <section class="section_1">
-        <article>
-            <h1 >Search for Recipes</h1>
-            <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest
-            updates from the culinary world. Go ahead and search for your favorite dish to discover
-            our detailed, easy-to-follow recipes for you to try at home!</p>
- 
-            <form role="search" class="search_container">
-                <label for="search_input" class="visually_hidden">Search for meal</label>
-                <input type="search" id="search_input" placeholder="Search for meal">
-                <button type="submit" class="search_box" id="search_button">
-                    <span class="search_box_icon">
-                        <img src="../search_icon.svg" alt="Search Icon">
-                    </span>
-                </button>
-            </form>
-             
-        </article>
-        <article>
-           <img class="splash_img" src="/placeholder_food.jpg" alt="food image">
-        </article>
- 
-       
-    </section>
-    <h2 id="meal_of_th_day">Meal of the day</h2>
-    <div class="search_results"></div>
-    <div id="meal_of_the_day_container"> <!-- fetched meal go here in the html structure --></div>
-   
-    <!--  template with styling for the fecthed meals -->
-    <template id="section_1_card">
-        <div class="card_container">
-            <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
-            <div class="card_details_container">
-                <div class="card_name_and_icon">
-                    <div class="fav_category_container">
-                        <button class="btn_fav">
-                            <div class="search_box_icon">
-                                <img src="../heart-no-fill.svg" alt="heart Icon">
-                            </div>
-                        </button>
-                        <div class="category_fav_flex">
-                            <div class="card_category_icon"><span>P</span></div>
-                            <p class="card_category">category</p>
-                        </div>
-                    </div>
-                    <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
-                </div>
-                <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
-            </div>
-        </div>  
-    </template>
-   
- 
- 
-    
-   
- 
-    <!-- UI CARD COMPONENT FOR FILTER -->
-    <template id="template_card">
-        <div class="card_container">
-            <img class="card_img" src="" alt="image of the meal">
-            <div class="card_details_container">
-                <div class="card_name_and_icon">
-                    <div class="fav_category_container">
-                        <button class="btn_fav">
-                            <div class="search_box_icon">
-                                <img src="../heart-no-fill.svg" alt="">
-                            </div>
-                        </button>
-                        <div class="category_fav_flex">
-                            <div class="card_category_icon"><span></span></div>
-                            <p class="card_category"></p>
-                        </div>
-                    </div>
-                    <h3 class="card_title hyphenate"></h3>
-                </div>
-                <div class="flex">
-                    <p class="card_area"></p>
-                    <a href="" class="card_youtube"></a>
-                </div>
-            </div>
-        </div>
-    </template>
-           
-       <!-- Carousel section -->
-    <section id="explore_more">
-        <h2>Explore more recipes</h2>
-        <div id="carousel_container">
- 
-            <section id="carousel">
-                <button class="controls" id="prevButton"><img src="../chevron-left.svg" class="control_icon" alt="previous icon chevron"></button>
-                <section  class="recipes_carousel"></section>
-                <button class="controls" id="nextButton"><img src="../chevron-right.svg" class="control_icon" alt="next icon chevron"></button>
-            </section>
-        </div>
- 
-    </section>
- 
-<!-- UI CARD CAROUSEL COMPONENT -->
-    <template id="carousel_card_template">
-        <article>
-            <div class="carousel_card_container">
-                <img class="carousel_card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+            <article>
+                <h1>Search for Recipes</h1>
+                <p>Welcome to our universe of delicious food recipes! We bring you the latest and tastiest updates from the culinary world. Go ahead and search for your favorite dish to discover our detailed, easy-to-follow recipes for you to try at home!</p>
+                <form role="search" class="search_container">
+                    <label for="search_input" class="visually_hidden">Search for meal</label>
+                    <input type="search" id="search_input" placeholder="Search for meal">
+                    <button type="submit" class="search_box" id="search_button">
+                        <span class="search_box_icon">
+                            <img src="../search_icon.svg" alt="Search Icon">
+                        </span>
+                    </button>
+                </form>
+            </article>
+            <article>
+                <img class="splash_img" src="/placeholder_food.jpg" alt="food image">
+            </article>
+        </section>
+        <h2 id="meal_of_th_day">Meal of the day</h2>
+        <div class="search_results"></div>
+        <div id="meal_of_the_day_container"></div> <!-- fetched meal go here in the html structure -->
+        <!-- template with styling for the fetched meals -->
+        <template id="section_1_card">
+            <div class="card_container">
+                <img class="card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
                 <div class="card_details_container">
                     <div class="card_name_and_icon">
                         <div class="fav_category_container">
                             <button class="btn_fav">
-                                <div class="search_box_icon">
-                                    <img src="../heart-no-fill.svg" alt="heart_icon">
-                                </div>
+                                <i class="far fa-heart" aria-hidden="true"></i>
+                            </button>
+                            <div class="category_fav_flex">
+                                <div class="card_category_icon"><span>P</span></div>
+                                <p class="card_category">category</p>
+                            </div>
+                        </div>
+                        <h3 class="card_title hyphenate">Seasoned pokebowl with greens</h3>
+                    </div>
+                    <p class="card_description hyphenate">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+                </div>
+            </div>
+        </template>
+        <!-- UI CARD COMPONENT FOR FILTER -->
+        <template id="template_card">
+            <div class="card_container">
+                <img class="card_img" src="" alt="image of the meal">
+                <div class="card_details_container">
+                    <div class="card_name_and_icon">
+                        <div class="fav_category_container">
+                            <button class="btn_fav">
+                                <i class="far fa-heart" aria-hidden="true"></i>
                             </button>
                             <div class="category_fav_flex">
                                 <div class="card_category_icon"><span></span></div>
@@ -146,35 +88,62 @@
                         </div>
                         <h3 class="card_title hyphenate"></h3>
                     </div>
-                    <p class="card_area">Pokebowl is a vibrant and nutritious dish that showcases a
-                        delightful mix of fresh ingredients.</p>
+                    <div class="flex">
+                        <p class="card_area"></p>
+                        <a href="" class="card_youtube"></a>
+                    </div>
                 </div>
             </div>
-        </article>
-    </template>
- 
-   
+        </template>
+        <!-- Carousel section -->
+        <section id="explore_more">
+            <h2>Explore more recipes</h2>
+            <div id="carousel_container">
+                <section id="carousel">
+                    <button class="controls" id="prevButton"><img src="../chevron-left.svg" class="control_icon" alt="previous icon chevron"></button>
+                    <section class="recipes_carousel"></section>
+                    <button class="controls" id="nextButton"><img src="../chevron-right.svg" class="control_icon" alt="next icon chevron"></button>
+                </section>
+            </div>
+        </section>
+        <!-- UI CARD CAROUSEL COMPONENT -->
+        <template id="carousel_card_template">
+            <article>
+                <div class="carousel_card_container">
+                    <img class="carousel_card_img" src="../placeholder_food.jpg" alt="image of pokebowl">
+                    <div class="card_details_container">
+                        <div class="card_name_and_icon">
+                            <div class="fav_category_container">
+                                <button class="btn_fav">
+                                    <i class="far fa-heart" aria-hidden="true"></i>
+                                </button>
+                                <div class="category_fav_flex">
+                                    <div class="card_category_icon"><span></span></div>
+                                    <p class="card_category"></p>
+                                </div>
+                            </div>
+                            <h3 class="card_title hyphenate"></h3>
+                        </div>
+                        <p class="card_area">Pokebowl is a vibrant and nutritious dish that showcases a delightful mix of fresh ingredients.</p>
+                    </div>
+                </div>
+            </article>
+        </template>
     </main>
     <footer>
         <div class="footer-container">
             <div id="footer_comedo">
                 <img src="/img/Comedo_red_logo.svg" alt="ComedoLogo">
-               
-                <p>Stay informed with curated recipes, made to fit any form of dietary preferences. Stay informed on new ideas for dinner and any other meal. Join our vibrant  community and elevate your journey with Comedo.
-                    Newsletter. Subscribe now!</p>
+                <p>Stay informed with curated recipes, made to fit any form of dietary preferences. Stay informed on new ideas for dinner and any other meal. Join our vibrant community and elevate your journey with Comedo. Newsletter. Subscribe now!</p>
             </div>
- 
             <div id="footer_navlinks">
                 <h1>COMPANY</h1>
                 <a href="#">About us</a>
                 <a href="#">Contact us</a>
                 <a href="#">Terms & Conditions </a>
- 
             </div>
- 
             <div id="footer_some">
                 <h1>SOCIALS</h1>
-                <!-- Husk at fjerne "/" -->
                 <a href="#"><img src="/img/icons_instagram.svg" alt="ComedoInstagram"></a>
                 <a href="#"><img src="/img/icons_facebook.svg" alt="ComedoFacebook"></a>
                 <a href="#"><img src="/img/icons_linkedin.svg" alt="ComedoLinkedin"></a>

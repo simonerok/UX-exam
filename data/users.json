@@ -44,6 +44,16 @@
       "id": "d1ac",
       "email": "test@live.dk",
       "password": "Password#1"
+    },
+    {
+      "id": "df88",
+      "email": "test2@live.dk",
+      "password": "Password#1"
+    },
+    {
+      "id": "3c0a",
+      "email": "test3@live.dk",
+      "password": "Password#1"
     }
   ]
 }
