@@ -1,5 +1,7 @@
 'use strict';
 
+import { getUserFavorites, toggleUserFavorite } from './utility.js';
+
 /****************************************  FETCH DATA FROM API TO BROWSE BY CATEGORY CARDS ************************************************/
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
@@ -34,11 +36,14 @@ const promises = Array.from({ length: 6 }, () => fetchMealFrontpage());
 // Use Promise.all to fetch all the meals using more API calls
 Promise.all(promises)
     .then(meals => {
-        // Get the template and the meal container
         const mealContainer = document.querySelector('#meal_container');
         const templateCard = document.querySelector('#template_card');
 
-        // For each meal
+        if (!mealContainer || !templateCard) {
+            console.error('meal_container or template_card not found');
+            return;
+        }
+
         meals.forEach(meal => {
             const cardClone = templateCard.content.cloneNode(true);
 
@@ -48,7 +53,12 @@ Promise.all(promises)
             const cardArea = cardClone.querySelector('.card_area');
             const youtubeLink = cardClone.querySelector('.card_youtube');
             const categoryIcon = cardClone.querySelector('.card_category_icon span');
-            const favIcon = cardClone.querySelector('.btn_fav i');
+            const favIcon = cardClone.querySelector('.btn_fav');
+
+            if (!cardImg || !cardTitle || !cardCategory || !cardArea || !youtubeLink || !categoryIcon || !favIcon) {
+                console.error('One or more elements not found in the cloned template card');
+                return;
+            }
 
             cardImg.src = meal.strMealThumb;
             cardTitle.textContent = meal.strMeal;
@@ -59,8 +69,7 @@ Promise.all(promises)
             categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
             favIcon.setAttribute('data-id', meal.idMeal);
 
-            // Set favorite icon based on sessionStorage
-            const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+            const favourites = getUserFavorites();
             if (favourites.includes(meal.idMeal)) {
                 favIcon.classList.add('fas');
                 favIcon.classList.remove('far');
@@ -76,49 +85,30 @@ Promise.all(promises)
     .catch(error => console.error('Error:', error));
 
 /****************************************  SEARCH BAR FUNCTIONALITY (fetching a meal by name lamb etc) ************************************************/
-// Select the search input and button from the DOM
 const searchInput = document.querySelector('#search_input');
 const searchButton = document.querySelector('#search_button');
 
-// Select the section where the meals will be displayed
 const section = document.querySelector('#meal_of_the_day_container');
-
-// Select the card template
 const cardContainer = document.querySelector('#section_1_card');
-
-// Select the h2 element
 const heading = document.querySelector('#meal_of_th_day');
 
-// Add an event listener to the search button
 searchButton.addEventListener('click', async function (e) {
-    // Prevent the form from submitting
     e.preventDefault();
-
-    // Get the value of the search input
     const searchTerm = searchInput.value;
-
-    // Fetch the meals from the API
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`);
     const data = await response.json();
 
-    // Check if any meals were found
     if (data.meals === null) {
         section.textContent = 'No meals found. Try to search for a name of the meal or a meal ingredient.';
         return;
     }
 
-    // Clear the previous search results
     section.innerHTML = '';
-
-    // Change the text of the h2 element
     heading.textContent = 'Meals you can try:';
 
-    // Create a card for each meal
     data.meals.slice(0, 6).forEach(meal => {
-        // Clone the card template
         const card = cardContainer.content.cloneNode(true);
 
-        // Get the elements in the card
         const img = card.querySelector('.card_img');
         const title = card.querySelector('.card_title');
         const description = card.querySelector('.card_description');
@@ -126,17 +116,20 @@ searchButton.addEventListener('click', async function (e) {
         const category = card.querySelector('.card_category');
         const favIcon = card.querySelector('.btn_fav i');
 
-        // Set the properties of the elements
+        if (!img || !title || !description || !categoryIcon || !category || !favIcon) {
+            console.error('One or more elements not found in the cloned search card template');
+            return;
+        }
+
         img.src = meal.strMealThumb;
         img.alt = meal.strMeal;
         title.textContent = meal.strMeal;
         description.textContent = meal.strInstructions;
-        categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
+        categoryIcon.textContent = meal.strCategory.charAt(0);
         category.textContent = meal.strCategory;
         favIcon.setAttribute('data-id', meal.idMeal);
 
-        // Set favorite icon based on sessionStorage
-        const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+        const favourites = getUserFavorites();
         if (favourites.includes(meal.idMeal)) {
             favIcon.classList.add('fas');
             favIcon.classList.remove('far');
@@ -144,44 +137,55 @@ searchButton.addEventListener('click', async function (e) {
             favIcon.classList.add('far');
             favIcon.classList.remove('fas');
         }
-
-        // Append the card to the section
-        section.appendChild(card);
-    });
+        
+        // Get the image in the cloned template
+        const card_img = card.querySelector('.card_img');
+        
+        // If img exists, add an event listener and send the id with
+        if (card_img) {
+            card_img.addEventListener('click', function() {
+                console.log("clicked", meal.idMeal);
+                window.location.href = `recipe.html?id=${meal.idMeal}`;
+            });
+        }
+            section.appendChild(card);
+        });
     addFavouriteListeners();
 });
 
 /****************************************  FETCH RANDOM MEAL FOR MEAL OF THE DAY CARD ************************************************/
-/* select the html element and ensure that the container can be cloned multiple times */
-const cardTemplate = document.querySelector('#section_1_card').content.cloneNode(true);
 
 async function mealOfTheDay() {
-    // Fetch a random meal
     const meal = await fetchRandomMeal();
-    console.log(meal); // Log the meal to the console
 
-    // Clone the card template
-    const card = cardTemplate.cloneNode(true);
-
-    // Get the elements in the card
+    const cardTemplate = document.querySelector('#section_1_card');
+    if (!cardTemplate) {
+        console.error('section_1_card template not found');
+        return;
+    }
+    const card = cardTemplate.content.cloneNode(true);
+    
     const img = card.querySelector('.card_img');
     const title = card.querySelector('.card_title');
     const description = card.querySelector('.card_description');
     const favIcon = card.querySelector('.btn_fav i');
-    const categoryIcon = card.querySelector('.card_category_icon');
+    const categoryIcon = card.querySelector('.card_category_icon span');
     const category = card.querySelector('.card_category');
-
-    // Set the properties of the elements
+    
+    if (!img || !title || !description || !favIcon || !categoryIcon || !category) {
+        console.error('One or more elements not found in the cloned card template');
+        return;
+    }
+    
     img.src = meal.strMealThumb;
     img.alt = meal.strMeal;
     title.textContent = meal.strMeal;
     description.textContent = meal.strInstructions;
     favIcon.setAttribute('data-id', meal.idMeal);
-    categoryIcon.textContent = meal.strCategory.charAt(0); // First letter of the category
+    categoryIcon.textContent = meal.strCategory.charAt(0);
     category.textContent = meal.strCategory;
-
-    // Set favorite icon based on sessionStorage
-    const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    
+    const favourites = getUserFavorites();
     if (favourites.includes(meal.idMeal)) {
         favIcon.classList.add('fas');
         favIcon.classList.remove('far');
@@ -190,13 +194,27 @@ async function mealOfTheDay() {
         favIcon.classList.remove('fas');
     }
 
-    // Append the card to the meal of the day container
     const mealOfTheDayContainer = document.querySelector('#meal_of_the_day_container');
-    mealOfTheDayContainer.appendChild(card);
+    if (!mealOfTheDayContainer) {
+        console.error('meal_of_the_day_container not found');
+        return;
+    }
+
+    // Get the image in the cloned template
+    const card_img = card.querySelector('.card_img');
+    
+    // If img exists, add an event listener and send the id with
+    if (card_img) {
+        card_img.addEventListener('click', function() {
+            console.log("clicked", meal.idMeal);
+            window.location.href = `recipe.html?id=${meal.idMeal}`;
+        });
+    }
+    
     addFavouriteListeners();
+    mealOfTheDayContainer.appendChild(card);
 }
 
-// Call the function
 mealOfTheDay();
 
 /* ------------- CAROUSEL CODE ---------------- */
@@ -216,7 +234,6 @@ async function fetchMealCarousel() {
     }
 }
 
-// Create an array of promises to load 8 meals for the carousel
 const mypromises = Array.from({ length: 8 }, () => fetchMealCarousel());
 
 Promise.all(mypromises)
@@ -234,26 +251,48 @@ function updateCards() {
         const cardClone = carouselTemplate.content.cloneNode(true);
         const cardImg = cardClone.querySelector('.carousel_card_img');
         const cardCategory = cardClone.querySelector('.card_category');
-        const cardCategoryIcon = cardClone.querySelector('.card_category_icon');
+        const cardCategoryIcon = cardClone.querySelector('.card_category_icon span');
         const cardTitle = cardClone.querySelector('.card_title');
         const cardArea = cardClone.querySelector('.card_area');
         const favIcon = cardClone.querySelector('.btn_fav i');
 
+
+        if (!cardImg) console.error('cardImg not found');
+        if (!cardCategory) console.error('cardCategory not found');
+        if (!cardCategoryIcon) console.error('cardCategoryIcon not found');
+        if (!cardTitle) console.error('cardTitle not found');
+        if (!cardArea) console.error('cardArea not found');
+        if (!favIcon) console.error('favIcon not found');
+
+        if (!cardImg || !cardCategory || !cardCategoryIcon || !cardTitle || !cardArea || !favIcon) {
+            console.error('One or more elements not found in the cloned carousel card template');
+        }
+
+        
         cardImg.src = carouselMeals[dataIndex].strMealThumb;
         cardTitle.textContent = carouselMeals[dataIndex].strMeal;
         cardCategory.textContent = carouselMeals[dataIndex].strCategory;
         cardArea.textContent = `Cuisine: ${carouselMeals[dataIndex].strArea}`;
         cardCategoryIcon.textContent = carouselMeals[dataIndex].strCategory.charAt(0);
         favIcon.setAttribute('data-id', carouselMeals[dataIndex].idMeal);
-
-        // Set favorite icon based on sessionStorage
-        const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+        const favourites = getUserFavorites();
         if (favourites.includes(carouselMeals[dataIndex].idMeal)) {
             favIcon.classList.add('fas');
             favIcon.classList.remove('far');
         } else {
             favIcon.classList.add('far');
             favIcon.classList.remove('fas');
+        }
+
+        // Get the image in the cloned template
+        const image_carousel_card = cardClone.querySelector('.carousel_card_img');
+        
+        // If cardImg exists, add an event listener and send the id with
+        if (image_carousel_card) {
+            image_carousel_card.addEventListener('click', function() {
+                console.log("clicked", carouselMeals[dataIndex].idMeal);
+                window.location.href = `recipe.html?id=${carouselMeals[dataIndex].idMeal}`;
+            });
         }
 
         destination.appendChild(cardClone);
@@ -300,28 +339,12 @@ function nextCard() {
     updateCards();
 }
 
-// Add event listeners to heart icons
 function addFavouriteListeners() {
     const hearts = document.querySelectorAll('.btn_fav i');
     hearts.forEach(heart => {
         heart.addEventListener('click', () => {
             const recipeId = heart.getAttribute('data-id');
-            toggleFavourite(recipeId, heart);
+            toggleUserFavorite(recipeId, heart);
         });
     });
-}
-
-// Toggle favorite status and store in sessionStorage
-function toggleFavourite(recipeId, heart) {
-    let favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
-    if (favourites.includes(recipeId)) {
-        favourites = favourites.filter(id => id !== recipeId);
-        heart.classList.remove('fas');
-        heart.classList.add('far');
-    } else {
-        favourites.push(recipeId);
-        heart.classList.remove('far');
-        heart.classList.add('fas');
-    }
-    sessionStorage.setItem('favourites', JSON.stringify(favourites));
 }

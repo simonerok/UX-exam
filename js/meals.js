@@ -1,68 +1,48 @@
-
 'use strict';
-
-const BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
-// Function to get URL parameters
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-async function fetchData(url) {
-    try {
-        const response = await fetch(BASE_URL + url);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
  
+/**************************** LOAD CLICKED MEAL RECIPE **************************/
+async function loadMealById(id) {
+    // Fetch the meal data
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    const meal = data.meals[0];
  
-async function fetchMealsByCategory(category) {
-    const data = await fetchData(`filter.php?c=${category}`);
-    const meals = data.meals;
-    if (meals) {
-        displayMeals(meals, category);
-    }
-}
-function displayMeals(meals, category) {
-    const container = document.getElementById('meals-container');
-    container.innerHTML = ''; // Clear previous meals
-    const categoryTitle = document.createElement('h2');
-    categoryTitle.textContent = `Meals in ${category} Category`;
-    container.appendChild(categoryTitle);
-    const mealsGrid = document.createElement('div');
-    mealsGrid.className = 'meals-grid';
-    meals.forEach(meal => {
-        const mealCard = document.createElement('div');
-        mealCard.className = 'meal-card';
-        const mealImg = document.createElement('img');
-        mealImg.src = meal.strMealThumb;
-        mealImg.alt = meal.strMeal;
-        const mealTitle = document.createElement('h3');
-        mealTitle.textContent = meal.strMeal;
-        mealCard.appendChild(mealImg);
-        mealCard.appendChild(mealTitle);
-        mealsGrid.appendChild(mealCard);
-        // Add click event to redirect to meal.html
-        mealCard.addEventListener('click', () => {
-            window.location.href = `recipe.html?mealId=${meal.idMeal}`;
-        });
+    // Get the template and clone it
+    const template = document.querySelector('#template_recipe');
+    const clone = template.content.cloneNode(true);
+ 
+    // Get the elements in the cloned template
+    const title = clone.querySelector('.title');
+    const img = clone.querySelector('.img');
+    const category = clone.querySelector('.category');
+    const cuisine = clone.querySelector('.cuisine');
+    const steps = clone.querySelector('.steps');
+ 
+    // Set the properties of the elements
+    title.textContent = meal.strMeal;
+    img.src = meal.strMealThumb;
+    img.alt = meal.strMeal;
+    category.textContent = "Category: " + meal.strCategory;
+    cuisine.textContent = "Cuisine: " + meal.strArea;
+ 
+    // Split the instructions into steps and add each step as a list item
+    const instructions = meal.strInstructions.split('.'); // Split by period
+    instructions.forEach(instruction => {
+        if (instruction.trim() !== '') { // Ignore empty strings
+            const li = document.createElement('li');
+            li.textContent = instruction;
+            steps.appendChild(li);
+        }
     });
-    container.appendChild(mealsGrid);
  
-    
+    // Append the cloned template to the meal details section
+    const mealDetails = document.querySelector('#meal-details');
+    mealDetails.appendChild(clone);
 }
  
- 
- 
-// Get category from URL and fetch meals
-document.addEventListener('DOMContentLoaded', () => {
-    const category = getUrlParameter('category');
-    if (category) {
-        fetchMealsByCategory(category);
-    }
+// Get the meal ID from the URL and call the loadMealById function when the page is loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const mealId = urlParams.get('id');
+    loadMealById(mealId);
 });
- 

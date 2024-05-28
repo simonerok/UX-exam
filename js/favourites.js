@@ -3,9 +3,9 @@
 const API_BASE_URL = 'https://www.themealdb.com/api/json/v1/1/';
 const favouritesSection = document.getElementById('favourites');
 
-// Fetch favorite recipes from sessionStorage and display them
+// Fetch favorite recipes from localStorage and display them
 async function fetchFavouriteRecipes() {
-    const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    const favourites = JSON.parse(localStorage.getItem('favorites')) || [];
     if (favourites.length === 0) {
         favouritesSection.innerHTML = '<p>No favourite recipes found.</p>';
         return;
@@ -16,6 +16,7 @@ async function fetchFavouriteRecipes() {
         const response = await fetch(API_BASE_URL + 'lookup.php?i=' + recipeId);
         const data = await response.json();
         favouriteRecipes.push(data.meals[0]);
+        console.log(favouriteRecipes)
     }
     displayRecipes(favouriteRecipes);
 }
@@ -23,6 +24,7 @@ async function fetchFavouriteRecipes() {
 // Display recipes in the favourites section
 function displayRecipes(recipes) {
     favouritesSection.innerHTML = ''; // Clear previous results
+    console.log("hej");
     if (recipes && recipes.length > 0) {
         recipes.forEach(recipe => {
             const recipeCard = document.createElement('div');
@@ -45,7 +47,7 @@ function displayRecipes(recipes) {
 
 // Add event listeners to heart icons in the favourites section
 function addFavouriteListeners() {
-    const hearts = document.querySelectorAll('.btn_fav i');
+    const hearts = document.querySelectorAll('.btn_fav > i');
     hearts.forEach(heart => {
         heart.addEventListener('click', () => {
             const recipeId = heart.getAttribute('data-id');
@@ -61,9 +63,9 @@ function addFavouriteListeners() {
     });
 }
 
-// Toggle favorite status and store in sessionStorage
+// Toggle favorite status and store in localStorage
 function toggleFavourite(recipeId, heart) {
-    let favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    let favourites = JSON.parse(localStorage.getItem('favorites')) || [];
     if (favourites.includes(recipeId)) {
         favourites = favourites.filter(id => id !== recipeId);
         heart.classList.remove('fas');
@@ -73,7 +75,7 @@ function toggleFavourite(recipeId, heart) {
         heart.classList.remove('far');
         heart.classList.add('fas');
     }
-    sessionStorage.setItem('favourites', JSON.stringify(favourites));
+    localStorage.setItem('favorites', JSON.stringify(favourites));
 }
 
 // Initial fetch of favourite recipes

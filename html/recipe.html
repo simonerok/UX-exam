@@ -6,37 +6,36 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/recipe.css">
-    <script src="/js/script.js" defer></script>
+   
     <script src="/js/recipe.js" defer></script>
+    <script src="/js/meals.js" defer></script>
     <title>Home</title>
 </head>
 <body>
-    <header class="banner">
-        <nav class="main-menu">
-            <img src="/icons/Comedo_red_logo.svg" alt="Logo" class="logo">
-        <button class="toggle-btn">menu</button>
-        <ul>
-            <li><a href="#0">Breakfast</a></li>
-            <li><a href="#0">Lunch</a></li>
-            <li><a href="#0">Dinner</a></li>
-            <li><a href="#0">Dessert</a></li>
-            <img src="/icons/heart-solid.svg" alt="heart" class="heart">
-            <img src="/icons/user-solid.svg" alt="user" class="user">
-        </ul>
-    </nav>
+    <header>
+        <nav class="dropdown">
+            <button class="nav-toggle" id="nav-toggle">
+                ☰
+            </button>
+            <ul class="main-menu" id="main-menu">
+                <li><a href="/index.html"><img src="/img/Comedo_red_logo.svg" alt="Logo" class="logo"></a></li>
+                <li><a href="/html/allrecipes.html">All Recipes</a></li>
+                <div class="nav_icons">
+                    <li><a href="/html/favourites.html"><img src="/icons/heart-solid.svg" alt="Heart Icon" class="heart_icon"></a></li>
+                    <li><a href="/html/login.html"><img src="/icons/user-solid.svg" alt="User Icon" class="user_icon"></a></li>
+                </div>
+            </ul>
+        </nav>
     </header>
-    <nav id="breadcrumbs" class="breadcrumbs">
-        <!-- Breadcrumbs will be dynamically inserted here -->
-    </nav>
-    
-        <!-- More meal elements here -->
-    </div>
-        <main>
+ 
+   
+    <main>
+        <h1>Recipe</h1>
             <section id="meal-details" class="meal-details">
-                
+               
             </section>
-    
-        <template>
+   
+        <template id="template_recipe">
         <section id="recipe">
             <h1 class="title"></h1>
             <img src="" alt="" class="img">
@@ -45,44 +44,13 @@
             <div class="description">
                 <ul class="steps">
                 <li></li>
-                
+               
             </ul>
             </div>
         </section>
     </template>
  
 </main>
-<footer>
-    <div class="footer-container">
-        <div id="footer_comedo">
-            <img src="/img/Comedo_red_logo.svg" alt="ComedoLogo">
-            
-            <p>Stay informed with curated recipes, made to fit any form of dietary preferences. Stay informed on new ideas for dinner and any other meal. Join our vibrant  community and elevate your journey with Comedo.
-                Newsletter. Subscribe now!</p>
-        </div>
- 
-        <div id="footer_navlinks">
-            <h1>COMPANY</h1>
-            <a href="#">About us</a>
-            <a href="#">Contact us</a>
-            <a href="#">Terms & Conditions </a>
- 
-        </div>
- 
-        <div id="footer_some">
-            <h1>SOCIALS</h1>
-            <!-- Husk at fjerne "/" -->
-            <a href="#"><img src="/img/icons_instagram.svg" alt="ComedoInstagram"></a>
-            <a href="#"><img src="/img/icons_facebook.svg" alt="ComedoFacebook"></a>
-            <a href="#"><img src="/img/icons_linkedin.svg" alt="ComedoLinkedin"></a>
-            <a href="#"><img src="/img/icons_youtube.svg" alt="ComedoYoutube"></a>
-        </div>
-    </div>
-</footer>
  
 </body>
 </html>
-has context menu
-
-
-has context menu

@@ -1,9 +1,10 @@
 'use strict';
  
- 
- 
+
 //logged user and logoout
 const logout_btn = document.getElementById('logout');
+const user_container = document.querySelector('.login_li');
+const logout_container = document.querySelector('.logout_li');
 //stores true/false whether a user is logged in
 let isLoggedIn;
  
@@ -36,6 +37,7 @@ function logout() {
     isLoggedIn = false;
     sessionStorage.removeItem("userLogged");
     toggleLogoutButton()
+    window.location.href="login.html"
 }
  
  
@@ -44,13 +46,16 @@ function toggleLogoutButton(){
     console.log("test");
    
 if (isLoggedIn) {
-    logout_btn.classList.remove("hidden");
+    user_container.classList.add("hidden");
+    logout_container.classList.remove("hidden");
     logout_btn.addEventListener("click", logout);
 } else if (!isLoggedIn) {
-    logout_btn.classList.add("hidden");
+    user_container.classList.remove("hidden");
+    logout_container.classList.add("hidden");
 }
 }
  
 getLoggedUser();
 isLogged();
 toggleLogoutButton();
+ 
