@@ -1,9 +1,9 @@
 @import 'variables.css';
-
+ 
 .user-favourites-container {
-    margin: var(--margin-desktop);
+    margin: 0rem;
 }
-
+ 
 .recipe-card {
     border: 1px solid var(--color-shadow);
     border-radius: 5px;
@@ -14,16 +14,16 @@
     margin: 1em; /* Add some margin for spacing */
     padding: 0.5rem;
 }
-
+ 
 .recipe-card img {
     width: 100%;
 }
-
+ 
 .recipe-card h3 {
     text-align: center;
     padding: 0.5em;
 }
-
+ 
 .recipe-card .fa-heart {
     position: absolute;
     top: 10px;
@@ -32,14 +32,31 @@
     cursor: pointer;
     color: var(--color-primary); /* Default color */
 }
-
+ 
 .recipe-card .fa-heart.fas {
     color: var(--color-red); /* Color when favorited */
 }
-
-#favourites{
+ 
+#favourites {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
-
+ 
+ 
+@media (min-width: 600px) {
+    #favourites {
+        justify-content: flex-start;
+    }
+    .user-favourites-container {
+         margin: 1.5rem
+    }
+}
+ 
+@media (min-width: 1024px) {
+    .user-favourites-container {
+         margin: var(--margin-desktop);
+    }
+}
+ 

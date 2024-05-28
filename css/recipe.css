@@ -131,3 +131,29 @@ h1{
     text-align: center;
 }
 }
+
+.breadcrumbs {
+    margin: 20px;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.breadcrumbs a {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: var(--color-primary);
+}
+
+#breadcrumbs{
+    justify-content: left;
+    gap: 1rem;
+}

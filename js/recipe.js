@@ -56,7 +56,7 @@ function updateBreadcrumbs(meal) {
     breadcrumbs.innerHTML = ''; // Clear previous breadcrumbs
  
     const homeLink = document.createElement('a');
-    homeLink.href = 'allrecipes.html'; 
+    homeLink.href = 'allrecipes.html'; // Adjust the link to your home page
     homeLink.textContent = 'Meals';
     breadcrumbs.appendChild(homeLink);
  
