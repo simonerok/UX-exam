@@ -44,6 +44,11 @@
       "id": "d1ac",
       "email": "test@live.dk",
       "password": "Password#1"
+    },
+    {
+      "id": "a69d",
+      "email": "d@mail.com",
+      "password": "Password.2"
     }
   ]
 }
