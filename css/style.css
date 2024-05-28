@@ -515,7 +515,10 @@ footer h1, h2{
 }
  
  
- 
+ .hidden{
+    display: none;
+}
+
 @media (min-width: 768px){
 .recipes_carousel article{
     margin: 1rem;
